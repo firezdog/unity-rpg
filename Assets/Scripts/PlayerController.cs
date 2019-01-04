@@ -20,18 +20,9 @@ public class PlayerController : MonoBehaviour {
 		playerBody.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * moveSpeed;
 		playerAnimator.SetFloat("moveX", playerBody.velocity.x);
 		playerAnimator.SetFloat("moveY", playerBody.velocity.y);
-		if (playerBody.velocity.x > 0) {
-			playerAnimator.SetFloat("facingX", 1.0f);
-			playerAnimator.SetFloat("facingY", 0.0f);
-		} else if (playerBody.velocity.x < 0) {
-			playerAnimator.SetFloat("facingX", -1.0f);
-			playerAnimator.SetFloat("facingY", 0.0f);
-		} else if (playerBody.velocity.y > 0) {
-			playerAnimator.SetFloat("facingX", 0.0f);
-			playerAnimator.SetFloat("facingY", 1.0f);
-		} else if (playerBody.velocity.y < 0) {
-			playerAnimator.SetFloat("facingX", 0.0f);
-			playerAnimator.SetFloat("facingY", -1.0f);
+		if (playerBody.velocity != new Vector2(0,0)) {
+			playerAnimator.SetFloat("facingX", playerBody.velocity.x);
+			playerAnimator.SetFloat("facingY", playerBody.velocity.y);
 		} else {
 			playerAnimator.SetBool("stopped", true);
 		}
