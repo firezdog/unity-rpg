@@ -10,8 +10,13 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField] float moveSpeed;
 	[SerializeField] Rigidbody2D playerBody;
 
+	public static PlayerController instance;
+
 	// Use this for initialization
 	void Start () {
+		if (instance == null) { instance = this; }
+		else { Destroy(gameObject); }
+		DontDestroyOnLoad(gameObject);
 	}
 	
 	// Update is called once per frame
