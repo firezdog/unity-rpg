@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField] Rigidbody2D playerBody;
 
 	public static PlayerController instance;
-	string from = "0-0";
+	string from = "start";
 	public string getFrom() { return from; }
 	public void setFrom(string value) { from = value; }
 
@@ -21,7 +21,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void loadPlayer() {
-		if (instance == null) { instance = this; }
+		if (instance == null) { 
+			instance = this; 
+		}
 		else { Destroy(gameObject); }
 		DontDestroyOnLoad(gameObject);
 	}
