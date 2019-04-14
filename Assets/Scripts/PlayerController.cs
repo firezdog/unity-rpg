@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using keyCode = UnityEngine.KeyCode;
 
 public class PlayerController : MonoBehaviour {
 
