@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
 
+	// both the sending and receiving portal need to have the same "from" for transport between -- should be renamed or refactored.
 	public string from;
 	public string to;
 	PlayerController p = PlayerController.instance;
