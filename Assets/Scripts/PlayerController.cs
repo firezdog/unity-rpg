@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
 	[SerializeField] Animator playerAnimator;
 	[SerializeField] float moveSpeed;
@@ -11,39 +9,47 @@ public class PlayerController : MonoBehaviour {
 
 	public static PlayerController instance;
 	string from = "start";
+	// for use with portal elements.
 	public string getFrom() { return from; }
 	public void setFrom(string value) { from = value; }
 
 	// Use this for initialization
-	void Start () {
+	void Start()
+	{
 		loadPlayer();
 	}
 
-	void loadPlayer() {
-		if (instance == null) { 
-			instance = this; 
+	void loadPlayer()
+	{
+		if (instance == null)
+		{
+			instance = this;
 		}
 		else { Destroy(gameObject); }
 		DontDestroyOnLoad(gameObject);
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
+	void Update()
+	{
 		animatePlayer();
 	}
 
-    private void animatePlayer()
-    {
+	private void animatePlayer()
+	{
 		playerBody.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * moveSpeed;
 		playerAnimator.SetFloat("moveX", playerBody.velocity.x);
 		playerAnimator.SetFloat("moveY", playerBody.velocity.y);
-		if (playerBody.velocity != new Vector2(0,0)) {
+		if (playerBody.velocity != new Vector2(0, 0))
+		{
 			playerAnimator.SetBool("stopped", false);
 			playerAnimator.SetFloat("facingX", playerBody.velocity.x);
 			playerAnimator.SetFloat("facingY", playerBody.velocity.y);
-		} else {
+		}
+		else
+		{
 			playerAnimator.SetBool("stopped", true);
 		}
-    }
+	}
 
 }

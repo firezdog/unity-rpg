@@ -1,16 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
 
-	// both the sending and receiving portal need to have the same "from" for transport between -- should be renamed or refactored.
-	public string from;
-	public string to;
+	// both the sending and receiving portal need to have the same "from" -- should be renamed or refactored.
+	public string toPortal;
+	public string toScene;
+	public Transform portalExit;
 	PlayerController p = PlayerController.instance;
-	static bool used = false;
 
 	void Start()
 	{
@@ -20,25 +18,15 @@ public class ChangeScene : MonoBehaviour
 				.FindGameObjectWithTag("Player")
 				.GetComponent<PlayerController>();
 		}
-		if (p.getFrom() == from) { p.transform.position = gameObject.transform.position; }
+		if (p.getFrom() == toPortal) { p.transform.position = portalExit.position; }
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.tag == "Player" && from != "start" && !used)
+		if (other.tag == "Player" && toPortal != "start")
 		{
-			SceneManager.LoadSceneAsync(to);
-			p.setFrom(from);
-			used = true;
+			SceneManager.LoadSceneAsync(toScene);
+			p.setFrom(toPortal);
 		}
 	}
-
-	private void OnTriggerExit2D(Collider2D other)
-	{
-		if (other.tag == "Player" && from != "start" && used)
-		{
-			used = false;
-		}
-	}
-
 }
