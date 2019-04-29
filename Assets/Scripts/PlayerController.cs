@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
 	private Vector3 mapMax;
 
 	public void setBounds(Vector3 mapMinValue, Vector3 mapMaxValue) {
-		mapMin = mapMinValue;
-		mapMax = mapMaxValue;
+		mapMin = mapMinValue + new Vector3(1f, 1f, 0);
+		mapMax = mapMaxValue - new Vector3(1f, 1f, 0);
 	}
 
 	// make sure this is set for other scripts
