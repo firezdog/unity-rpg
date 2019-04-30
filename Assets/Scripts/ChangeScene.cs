@@ -9,6 +9,7 @@ public class ChangeScene : MonoBehaviour
 	public string toScene;
 	public Transform portalExit;
 	PlayerController p = PlayerController.instance;
+	public UIFade fader;
 
 	void Start()
 	{
@@ -26,6 +27,7 @@ public class ChangeScene : MonoBehaviour
 		if (other.tag == "Player" && toPortal != "start")
 		{
 			SceneManager.LoadSceneAsync(toScene);
+			fader.turnFadeOn();
 			p.setFrom(toPortal);
 		}
 	}
