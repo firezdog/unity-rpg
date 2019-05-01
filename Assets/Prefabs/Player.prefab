@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 7181534472291853100}
-  moveSpeed: 2
+  moveSpeed: 10
   playerBody: {fileID: 7181534472291853090}
 --- !u!95 &7181534472291853100
 Animator:

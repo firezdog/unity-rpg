@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
@@ -7,12 +8,14 @@ public class ChangeScene : MonoBehaviour
 	// both the sending and receiving portal need to have the same "from" -- should be renamed or refactored.
 	public string toPortal;
 	public string toScene;
+	public float loadWait = 1f;
 	public Transform portalExit;
-	PlayerController p = PlayerController.instance;
-	public UIFade fader;
+
+	private PlayerController p = PlayerController.instance;
 
 	void Start()
 	{
+		UIFade.instance.fadeOut();
 		if (p == null)
 		{
 			p = GameObject
@@ -26,9 +29,15 @@ public class ChangeScene : MonoBehaviour
 	{
 		if (other.tag == "Player" && toPortal != "start")
 		{
-			SceneManager.LoadSceneAsync(toScene);
-			fader.turnFadeOn();
+			UIFade.instance.fadeIn();
+			StartCoroutine(waitAndLoad());
 			p.setFrom(toPortal);
 		}
 	}
+
+	private IEnumerator waitAndLoad() {
+		yield return new WaitForSeconds(loadWait);
+		SceneManager.LoadScene(toScene);
+	}
+
 }
