@@ -103,5 +103,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toPortal: Country-Town
   toScene: Town
-  loadWait: 1
+  loadWait: 0.5
   portalExit: {fileID: 4849944738437875975}
