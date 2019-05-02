@@ -5,6 +5,8 @@ using UnityEngine;
 public class Loader : MonoBehaviour
 {
 
+    // TODO: make this into a singleton
+
     public GameObject[] toLoad;
 
     // Start is called before the first frame update
