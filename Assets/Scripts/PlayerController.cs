@@ -26,10 +26,10 @@ public class PlayerController : MonoBehaviour
 	// make sure this is set for other scripts
 	void Awake()
 	{
-		loadPlayer();
+		setInstance();
 	}
 
-	private void loadPlayer()
+	private void setInstance()
 	{
 		if (instance == null)
 		{
