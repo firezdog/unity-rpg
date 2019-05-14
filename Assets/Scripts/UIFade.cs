@@ -10,7 +10,7 @@ public class UIFade : MonoBehaviour
     public float fadeSpeed;
 
     private bool fadeTo;
-    private bool fadeFrom = true;
+    private bool fadeFrom;
 
     public void fadeIn() { 
         fadeTo = true; 
@@ -24,8 +24,20 @@ public class UIFade : MonoBehaviour
 
     void Start() 
     {
-        instance = this;
+        // without this, the scene defaults to the last used fade object, which is transparent (no fade from black effect).
+        setInstance();
     }
+
+    private void setInstance()
+	{
+		if (instance == null)
+		{
+			instance = this;
+            fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, 1f);
+		}
+		else { Destroy(gameObject); }
+		DontDestroyOnLoad(gameObject);
+	}
 
     // Start is called before the first frame update
     void Update()

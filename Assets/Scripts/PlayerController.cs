@@ -3,7 +3,6 @@ using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
-
 	[SerializeField] Animator playerAnimator;
 	[SerializeField] float moveSpeed;
 	[SerializeField] Rigidbody2D playerBody;
