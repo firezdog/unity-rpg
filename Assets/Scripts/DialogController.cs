@@ -22,9 +22,15 @@ public class DialogController : MonoBehaviour
     void Start()
     {
         dialogLines = Regex.Split(textAsset.text, "\n");
-        Debug.Log(dialogLines.Length);
         dialogBadgeText.text = dialogLines[0];
-        dialogText.text = dialogLines[1];
+        StartCoroutine("writeText");
+    }
+
+    IEnumerator writeText() {
+        for (int i = 0; i < dialogLines[1].Length; i++) {
+            yield return new WaitForSeconds(0.1f);
+            dialogText.text = dialogLines[1].Substring(0, i);
+        }
     }
 
     // Update is called once per frame
