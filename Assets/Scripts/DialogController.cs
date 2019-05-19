@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
-using System.IO;
-using UnityEngine;
+﻿using System;
+using System.Collections;
 using System.Text.RegularExpressions;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class DialogController : MonoBehaviour
-{
+public class DialogController : MonoBehaviour {
 
     public GameObject dialogBox;
     public GameObject dialogBadge;
@@ -14,28 +12,47 @@ public class DialogController : MonoBehaviour
     public Text dialogBadgeText;
 
     public string[] dialogLines;
-    public int currentLine;
-    
+    public int currentLine = 1;
+    bool focussed = false;
+
     public TextAsset textAsset;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        dialogLines = Regex.Split(textAsset.text, "\n");
-        dialogBadgeText.text = dialogLines[0];
-        StartCoroutine("writeText");
+    void Start () {
+        dialogLines = Regex.Split (textAsset.text, "\n");
+        dialogBadgeText.text = dialogLines[currentLine++];
+        StartCoroutine ("typeText");
     }
 
-    IEnumerator writeText() {
-        for (int i = 0; i < dialogLines[1].Length; i++) {
-            yield return new WaitForSeconds(0.1f);
-            dialogText.text = dialogLines[1].Substring(0, i);
+    void printText () {
+        if (currentLine == dialogLines.Length) return;
+        if (Input.GetKeyDown ("space")) {
+            if (focussed) {
+                StartCoroutine ("typeText");
+            } else {
+                StopCoroutine ("typeText");
+                focus ();
+            }
         }
     }
 
+    private void focus () {
+        focussed = true;
+        dialogText.text = dialogLines[currentLine];
+        currentLine++;
+    }
+
+    IEnumerator typeText () {
+        focussed = false;
+        for (int i = 0; i < dialogLines[currentLine].Length; i++) {
+            yield return new WaitForSeconds (0.1f);
+            dialogText.text = dialogLines[currentLine].Substring (0, i);
+        }
+        focus ();
+    }
+
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update () {
+        printText ();
     }
 }
