@@ -1,0 +1,12 @@
+==== Reading Multiple Lines ====
+
+=> activeInHierarchy (useful later)
+uses GetButton w/ Input Manager (might be good w/ spacebar)
+(Project Settings => Input)
+(Fire1 = left ctrl, mouse 0)
+GetButton vs. GetButtonUp
+prevent out of range errors (deactivate dialog box when we get to end)
+setActive(false)
+
+==== Activating And Switching Lines ====
+

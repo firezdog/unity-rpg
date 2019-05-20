@@ -25,8 +25,8 @@ public class DialogController : MonoBehaviour {
     }
 
     void printText () {
-        if (currentLine == dialogLines.Length) return;
-        if (Input.GetKeyDown ("space")) {
+        if (currentLine == dialogLines.Length) dialogBox.SetActive(false);
+        if (Input.GetButtonUp ("Fire1")) {
             if (focussed) {
                 StartCoroutine ("typeText");
             } else {
@@ -53,6 +53,8 @@ public class DialogController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        printText ();
+        if (dialogBox.activeInHierarchy) {
+            printText ();
+        }
     }
 }
