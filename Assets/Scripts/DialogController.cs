@@ -26,7 +26,10 @@ public class DialogController : MonoBehaviour {
 
     void printText () {
         // TODO: this closes dialog on arrival at last line -- fix.
-        if (currentLine == dialogLines.Length) dialogBox.SetActive(false);
+        if (currentLine == dialogLines.Length) { 
+            close();
+            return;
+        }
         if (Input.GetButtonUp ("Fire1")) {
             if (focussed) {
                 StartCoroutine ("typeText");
@@ -37,7 +40,11 @@ public class DialogController : MonoBehaviour {
         }
     }
 
-    private void focus () {
+    void close () {
+        if(Input.GetButtonUp("Fire1")) dialogBox.SetActive(false);
+    }
+
+    void focus () {
         focussed = true;
         dialogText.text = dialogLines[currentLine];
         currentLine++;
