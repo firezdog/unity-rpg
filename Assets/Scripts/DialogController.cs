@@ -25,6 +25,7 @@ public class DialogController : MonoBehaviour {
     }
 
     void printText () {
+        // TODO: this closes dialog on arrival at last line -- fix.
         if (currentLine == dialogLines.Length) dialogBox.SetActive(false);
         if (Input.GetButtonUp ("Fire1")) {
             if (focussed) {
