@@ -6,23 +6,39 @@ using UnityEngine.UI;
 
 public class DialogController : MonoBehaviour {
 
-    public GameObject dialogBox;
-    public GameObject dialogBadge;
-    public Text dialogText;
-    public Text dialogBadgeText;
+    [SerializeField] private GameObject dialogBox;
+    [SerializeField] private GameObject dialogBadge;
+    [SerializeField] private Text dialogText;
+    [SerializeField] private Text dialogBadgeText;
 
-    public string[] dialogLines;
-    public int currentLine = 1;
+    string[] dialogLines;
+    int currentLine = 1;
     bool focussed = false;
 
-    public TextAsset textAsset;
+    [SerializeField] TextAsset textAsset;
+
+    public static DialogController instance;
+
+    void Awake() {
+        // TODO: setInstance should be refactored since it is common to many classes.
+        setInstance();
+    }
 
     // Start is called before the first frame update
     void Start () {
+        this.ToggleActive(false);
+        // TODO -- this needs to be part of a separate method used to set dialog.
         dialogLines = Regex.Split (textAsset.text, "\n");
         dialogBadgeText.text = dialogLines[currentLine++];
-        StartCoroutine ("typeText");
     }
+
+    private void setInstance() {
+		if (instance == null) {
+			instance = this;
+		}
+		else { Destroy(gameObject); }
+		DontDestroyOnLoad(gameObject);
+	}
 
     void printText () {
         // TODO: this closes dialog on arrival at last line -- fix.
@@ -41,7 +57,7 @@ public class DialogController : MonoBehaviour {
     }
 
     void close () {
-        if(Input.GetButtonUp("Fire1")) dialogBox.SetActive(false);
+        if(Input.GetButtonUp("Fire1")) this.ToggleActive(false);
     }
 
     void focus () {
@@ -57,6 +73,10 @@ public class DialogController : MonoBehaviour {
             dialogText.text = dialogLines[currentLine].Substring (0, i);
         }
         focus ();
+    }
+
+    public void ToggleActive(bool state) {
+        dialogBox.SetActive(state);
     }
 
     // Update is called once per frame
