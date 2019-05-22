@@ -249,6 +249,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialog Box
       objectReference: {fileID: 0}
+    - target: {fileID: 2146123077, guid: 294cb541d492c483985f953ec7fa76e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2146123079, guid: 294cb541d492c483985f953ec7fa76e9, type: 3}
       propertyPath: m_Type
       value: 1
@@ -345,6 +349,8 @@ GameObject:
   m_Component:
   - component: {fileID: 495609023}
   - component: {fileID: 495609022}
+  - component: {fileID: 495609024}
+  - component: {fileID: 495609025}
   m_Layer: 0
   m_Name: Martha
   m_TagString: Untagged
@@ -414,6 +420,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &495609024
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495609021}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.875, y: 1}
+    newSize: {x: 0.875, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.875, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &495609025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495609021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba89b668660ae6149bf337e0d51f22a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &613036830
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6528,8 +6572,6 @@ MonoBehaviour:
   dialogBadge: {fileID: 1855893320}
   dialogText: {fileID: 1846301357}
   dialogBadgeText: {fileID: 1383480314}
-  dialogLines: []
-  currentLine: 0
   textAsset: {fileID: 4900000, guid: 73960ab58a7557042978b175befb9116, type: 3}
 --- !u!1 &1132482427
 GameObject:
