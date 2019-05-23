@@ -257,6 +257,11 @@ PrefabInstance:
       propertyPath: m_Type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4709373681014898900, guid: 294cb541d492c483985f953ec7fa76e9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.3266602
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 294cb541d492c483985f953ec7fa76e9, type: 3}
 --- !u!224 &193048015 stripped
@@ -458,6 +463,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba89b668660ae6149bf337e0d51f22a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textAsset: {fileID: 4900000, guid: 73960ab58a7557042978b175befb9116, type: 3}
+  id: Martha
 --- !u!1001 &613036830
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6572,7 +6579,6 @@ MonoBehaviour:
   dialogBadge: {fileID: 1855893320}
   dialogText: {fileID: 1846301357}
   dialogBadgeText: {fileID: 1383480314}
-  textAsset: {fileID: 4900000, guid: 73960ab58a7557042978b175befb9116, type: 3}
 --- !u!1 &1132482427
 GameObject:
   m_ObjectHideFlags: 0
