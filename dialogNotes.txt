@@ -10,3 +10,7 @@ setActive(false)
 
 ==== Activating And Switching Lines ====
 
+different dialog in different situations
+new script for NPC (DialogActivator)
+put collider on NPC
+When character collides with NPC (should be solid), NPC will activate dialog and set dialog text

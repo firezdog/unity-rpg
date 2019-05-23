@@ -12,10 +12,9 @@ public class DialogController : MonoBehaviour {
     [SerializeField] private Text dialogBadgeText;
 
     string[] dialogLines;
-    int currentLine = 1;
-    bool focussed = false;
-
-    [SerializeField] TextAsset textAsset;
+    int currentLine;
+    bool focussed;
+    DialogActivator da;
 
     public static DialogController instance;
 
@@ -26,10 +25,7 @@ public class DialogController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start () {
-        this.ToggleActive(false);
-        // TODO -- this needs to be part of a separate method used to set dialog.
-        dialogLines = Regex.Split (textAsset.text, "\n");
-        dialogBadgeText.text = dialogLines[currentLine++];
+        this.ToggleActive();
     }
 
     private void setInstance() {
@@ -57,7 +53,16 @@ public class DialogController : MonoBehaviour {
     }
 
     void close () {
-        if(Input.GetButtonUp("Fire1")) this.ToggleActive(false);
+        if(Input.GetButtonUp("Fire1")) { 
+            da.Focus();
+            StartCoroutine("DelayedToggleActive", 0.1f);
+        }
+
+    }
+
+    IEnumerator DelayedToggleActive(float f) {
+        yield return new WaitForSeconds(f);
+        this.ToggleActive();
     }
 
     void focus () {
@@ -75,8 +80,29 @@ public class DialogController : MonoBehaviour {
         focus ();
     }
 
-    public void ToggleActive(bool state) {
-        dialogBox.SetActive(state);
+    public void ToggleActive() {
+        clear();
+        dialogBox.SetActive(false);
+    }
+
+    void clear() {
+        StopAllCoroutines();
+        
+        dialogText.text = "";
+        dialogBadgeText.text = "";
+
+        dialogLines = null;
+        da = null;
+        currentLine = 0;
+        focussed = false;
+    }
+
+    public void ToggleActive(string id, string[] lines, DialogActivator instance) {
+        da = instance;
+        dialogBadgeText.text = id;
+        dialogLines = lines;
+        dialogBox.SetActive(true);
+        StartCoroutine("typeText");
     }
 
     // Update is called once per frame
