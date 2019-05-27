@@ -38,3 +38,7 @@ solution: set flag to keep player from moving when talking?
 === Keeping the Character From Moving ===
 
 My strategy: flag in PlayerController with set method -- dialog activator sets and clears flag, flag prevents motion.
+Video strategy is the same (even name of variable) except that variable was public
+Player script was complicated because all move logic was in update()
+sets velocity to be 0 so that there isn't a "bleedover" effect (when holding on deactivating)
+Sets canMove active when activating dialog box

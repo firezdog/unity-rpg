@@ -38,12 +38,11 @@ public class DialogActivator : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        focussed = true;
+        if (other.gameObject.tag == "Player") focussed = true;
     }
 
     private void OnCollisionExit2D(Collision2D other) {
-        dc.ToggleActive();
-        focussed = false;
+        if (other.gameObject.tag == "Player") focussed = false;
     }
 
 }
