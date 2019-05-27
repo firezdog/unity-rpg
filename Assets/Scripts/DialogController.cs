@@ -54,7 +54,6 @@ public class DialogController : MonoBehaviour {
 
     void close () {
         if(Input.GetButtonUp("Fire1")) { 
-            da.Focus();
             StartCoroutine("DelayedToggleActive", 0.1f);
         }
 
@@ -62,6 +61,7 @@ public class DialogController : MonoBehaviour {
 
     IEnumerator DelayedToggleActive(float f) {
         yield return new WaitForSeconds(f);
+        da.Focus();
         this.ToggleActive();
     }
 
@@ -81,9 +81,9 @@ public class DialogController : MonoBehaviour {
     }
 
     public void ToggleActive() {
+        dialogBox.SetActive(false);
         clear();
         PlayerController.instance.SetCanMove(true);
-        dialogBox.SetActive(false);
     }
 
     void clear() {
