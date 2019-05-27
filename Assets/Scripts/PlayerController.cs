@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
 	public string getFrom() { return from; }
 	public void setFrom(string value) { from = value; }
 
+	private bool canMove = true;
+	public void SetCanMove(bool option) { canMove = option; }
+
 	private Vector3 mapMin;
 	private Vector3 mapMax;
 
@@ -50,8 +53,10 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		animatePlayer();
-		clampPlayer();
+		if (canMove) {
+			animatePlayer();
+			clampPlayer();
+		}
 	}
 
 	private void animatePlayer()

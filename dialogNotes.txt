@@ -14,3 +14,27 @@ different dialog in different situations
 new script for NPC (DialogActivator)
 put collider on NPC
 When character collides with NPC (should be solid), NPC will activate dialog and set dialog text
+
+=== Activating And Switching Lines Pt. 2 ===
+
+two box colliders for girl -- one on enter allowing talk, one to keep from covering
+pressing button activates dialogue
+make instance of DialogManager accessible
+DialogActivator has array of strings for dialog text (I used file)
+When player is in area, check to see if they press button (set flag on entering dialog area)
+** Only activate if the collider is the player!
+On exiting, can activate is false
+if you can activate and the player fires, open dialog box
+create function that activator will call to start dialog manager managing dialog flow (I gave it the lines and let it do the rest)
+set currentLine in dialogManager to 0
+display first line and get ready to display more on user input
+** You can use debug view to debug Unity (inspector)!
+Bug: second line of text appears instead of first
+The first appears too fast (confusion of fire between opening dialog box and skipping to next line)
+solution: check if the dialog box is active (seems like a different issue, like closing right away) -- and use justStarted flag in DialogManager to keep from advancing lines if justStarted is set. (I dunno -- this doesn't address the underlying issue, which is the duplication of fire event between the two components)
+next issue: player can move when talking
+solution: set flag to keep player from moving when talking?
+
+=== Keeping the Character From Moving ===
+
+My strategy: flag in PlayerController with set method -- dialog activator sets and clears flag, flag prevents motion.

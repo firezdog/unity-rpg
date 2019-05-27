@@ -82,6 +82,7 @@ public class DialogController : MonoBehaviour {
 
     public void ToggleActive() {
         clear();
+        PlayerController.instance.SetCanMove(true);
         dialogBox.SetActive(false);
     }
 
@@ -101,6 +102,7 @@ public class DialogController : MonoBehaviour {
         da = instance;
         dialogBadgeText.text = id;
         dialogLines = lines;
+        PlayerController.instance.SetCanMove(false);
         dialogBox.SetActive(true);
         StartCoroutine("typeText");
     }
