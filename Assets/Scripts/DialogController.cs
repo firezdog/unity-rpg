@@ -86,6 +86,21 @@ public class DialogController : MonoBehaviour {
         PlayerController.instance.SetCanMove(true);
     }
 
+    public void ToggleActive(string id, string[] lines, DialogActivator instance) {
+        da = instance;
+        if (id == "Sign") {
+            dialogBadge.SetActive(false);
+        }
+        else {
+            dialogBadge.SetActive(true);
+            dialogBadgeText.text = id;
+        }
+        dialogLines = lines;
+        PlayerController.instance.SetCanMove(false);
+        dialogBox.SetActive(true);
+        StartCoroutine("typeText");
+    }
+
     void clear() {
         StopAllCoroutines();
         
@@ -96,15 +111,6 @@ public class DialogController : MonoBehaviour {
         da = null;
         currentLine = 0;
         focussed = false;
-    }
-
-    public void ToggleActive(string id, string[] lines, DialogActivator instance) {
-        da = instance;
-        dialogBadgeText.text = id;
-        dialogLines = lines;
-        PlayerController.instance.SetCanMove(false);
-        dialogBox.SetActive(true);
-        StartCoroutine("typeText");
     }
 
     // Update is called once per frame

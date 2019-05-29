@@ -42,3 +42,16 @@ Video strategy is the same (even name of variable) except that variable was publ
 Player script was complicated because all move logic was in update()
 sets velocity to be 0 so that there isn't a "bleedover" effect (when holding on deactivating)
 Sets canMove active when activating dialog box
+
+=== Showing Speaker Name ===
+
+I already handled this by passing info about speaker from the activator.
+
+=== Hiding Namebar For Signs ===
+
+Strategy: pass special name / flag from activator that turns off the name badge for signs.
+Pros of using a flag -- makes the functionality clearer
+Cons -- passing in a flag (code smell?)
+Could use a special id ("Sign") to address this -- but then it isn't obvious to clients
+Possible solution: flag that sets id to "Sign" (granted now user can't use this name) without passing in anything additional on activation.
+Will need a prefab of some sort to assign to sign objects? / make a character prefab.

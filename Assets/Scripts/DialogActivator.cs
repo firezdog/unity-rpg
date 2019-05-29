@@ -7,6 +7,7 @@ public class DialogActivator : MonoBehaviour
 {
     [SerializeField] TextAsset textAsset;
     [SerializeField] string id;
+    [SerializeField] bool isSign;
 
     private bool focussed = false;
     
@@ -19,6 +20,7 @@ public class DialogActivator : MonoBehaviour
     void Start()
     {
         dc = DialogController.instance;
+        if (isSign) id = "Sign";
     }
 
     private string[] getDialog() {
