@@ -18,6 +18,9 @@ public class DialogController : MonoBehaviour {
 
     public static DialogController instance;
 
+    private static Regex nameRegex = new Regex(@"^\[n\]([a-zA-Z]+)");
+    private static Regex signRegex = new Regex(@"^\[s\]");
+
     void Awake() {
         // TODO: setInstance should be refactored since it is common to many classes.
         setInstance();
@@ -52,6 +55,38 @@ public class DialogController : MonoBehaviour {
         }
     }
 
+    IEnumerator typeText () {
+        focussed = false;
+        checkForDirective();
+        for (int i = 0; i < dialogLines[currentLine].Length; i++) {
+            yield return new WaitForSeconds (0.1f);
+            dialogText.text = dialogLines[currentLine].Substring (0, i);
+        }
+        focus ();
+    }
+
+    void checkForDirective() {
+        var match = nameRegex.Match(dialogLines[currentLine]);
+        if (match.Success) {
+            dialogBadge.SetActive(true);
+            dialogBadgeText.text = match.Groups[1].ToString();
+            currentLine++;
+            return;
+        }
+        match = signRegex.Match(dialogLines[currentLine]);
+        if (match.Success) {
+            dialogBadge.SetActive(false);
+            currentLine++;
+            return;
+        }
+    }
+
+    void focus () {
+        focussed = true;
+        dialogText.text = dialogLines[currentLine];
+        currentLine++;
+    }
+
     void close () {
         if(Input.GetButtonUp("Fire1")) { 
             StartCoroutine("DelayedToggleActive", 0.1f);
@@ -65,40 +100,10 @@ public class DialogController : MonoBehaviour {
         this.ToggleActive();
     }
 
-    void focus () {
-        focussed = true;
-        dialogText.text = dialogLines[currentLine];
-        currentLine++;
-    }
-
-    IEnumerator typeText () {
-        focussed = false;
-        for (int i = 0; i < dialogLines[currentLine].Length; i++) {
-            yield return new WaitForSeconds (0.1f);
-            dialogText.text = dialogLines[currentLine].Substring (0, i);
-        }
-        focus ();
-    }
-
     public void ToggleActive() {
         dialogBox.SetActive(false);
         clear();
         PlayerController.instance.SetCanMove(true);
-    }
-
-    public void ToggleActive(string id, string[] lines, DialogActivator instance) {
-        da = instance;
-        if (id == "Sign") {
-            dialogBadge.SetActive(false);
-        }
-        else {
-            dialogBadge.SetActive(true);
-            dialogBadgeText.text = id;
-        }
-        dialogLines = lines;
-        PlayerController.instance.SetCanMove(false);
-        dialogBox.SetActive(true);
-        StartCoroutine("typeText");
     }
 
     void clear() {
@@ -111,6 +116,14 @@ public class DialogController : MonoBehaviour {
         da = null;
         currentLine = 0;
         focussed = false;
+    }
+
+    public void ToggleActive(string[] lines, DialogActivator instance) {
+        da = instance;
+        dialogLines = lines;
+        PlayerController.instance.SetCanMove(false);
+        dialogBox.SetActive(true);
+        StartCoroutine("typeText");
     }
 
     // Update is called once per frame

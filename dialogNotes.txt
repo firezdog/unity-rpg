@@ -46,6 +46,8 @@ Sets canMove active when activating dialog box
 === Showing Speaker Name ===
 
 I already handled this by passing info about speaker from the activator.
+Class strategy: use "n-" prefix for names (to handle name changes during dialogue). (Slightly different case -- allows for more dynamic dialogue -- the one thing this doesn't cover is dialogue that changes based on the circumstance? I can add it to the system?
+Strategy -- if "-n" prefix appears (use regex?) then change nametag and move to next line (while printing).
 
 === Hiding Namebar For Signs ===
 

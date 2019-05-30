@@ -6,8 +6,6 @@ using UnityEngine;
 public class DialogActivator : MonoBehaviour
 {
     [SerializeField] TextAsset textAsset;
-    [SerializeField] string id;
-    [SerializeField] bool isSign;
 
     private bool focussed = false;
     
@@ -20,7 +18,6 @@ public class DialogActivator : MonoBehaviour
     void Start()
     {
         dc = DialogController.instance;
-        if (isSign) id = "Sign";
     }
 
     private string[] getDialog() {
@@ -36,7 +33,7 @@ public class DialogActivator : MonoBehaviour
 
     IEnumerator Activate() {
         yield return new WaitForSeconds(0.1f);
-        dc.ToggleActive(id, getDialog(), this);
+        dc.ToggleActive(getDialog(), this);
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
