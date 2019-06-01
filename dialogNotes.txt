@@ -49,6 +49,13 @@ I already handled this by passing info about speaker from the activator.
 Class strategy: use "n-" prefix for names (to handle name changes during dialogue). (Slightly different case -- allows for more dynamic dialogue -- the one thing this doesn't cover is dialogue that changes based on the circumstance? I can add it to the system?
 Strategy -- if "-n" prefix appears (use regex?) then change nametag and move to next line (while printing).
 
+****
+
+CheckIfName() determines whether line is a name and changes badge accordingly
+used startsWith instead of regex
+call before displaying each line (parse line before displaying)
+need to read past directive -- use .replace "n-" with ""
+
 === Hiding Namebar For Signs ===
 
 Strategy: pass special name / flag from activator that turns off the name badge for signs.
@@ -57,3 +64,8 @@ Cons -- passing in a flag (code smell?)
 Could use a special id ("Sign") to address this -- but then it isn't obvious to clients
 Possible solution: flag that sets id to "Sign" (granted now user can't use this name) without passing in anything additional on activation.
 Will need a prefab of some sort to assign to sign objects? / make a character prefab.
+-- Adapt above directive solution and give signs a [sign] directive
+
+***
+
+Uses flag solution discussed above
