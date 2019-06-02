@@ -57,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 4849944739512834251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13.52, y: -2.53, z: 0}
-  m_LocalScale: {x: 1.1361914, y: 0.8799847, z: 1.1361914}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4849944738437875975}
   m_Father: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33da1a621a924544937b97b39ed733f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toPortal: Country-Town
-  toScene: Town
-  loadWait: 0.5
+  toPortal: start
+  toScene: 
+  loadWait: 5
   portalExit: {fileID: 4849944738437875975}
