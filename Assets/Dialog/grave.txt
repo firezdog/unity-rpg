@@ -1,4 +1,0 @@
-[s]
-Here lies Yorick.
-[n]Player
-Alas, poor Yorick -- I knew him well.

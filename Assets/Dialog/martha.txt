@@ -1,5 +1,0 @@
-[n]Martha
-Hello.
-My name is Martha.
-[n]Player
-I'm very happy to make your acquaintance.
