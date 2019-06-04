@@ -11,6 +11,7 @@
 * Concern -- if formula determines exp req's at START -- then what if you want to update them?  Check in method if it has non-zero value?
 * Use base exp (accessible from editor) to "seed" level req's.
 * To allow user some freedom both in setting number of max level and max level variables, create separate array for custom scores (up to max allowed max level) and then fill in those scores when initializing.
+* Tutorial uses 105% of previous level for next level (exponential).
 ## Testing Leveling
 ## Gaining Stats On Level Up
 ## Creating Game Manager

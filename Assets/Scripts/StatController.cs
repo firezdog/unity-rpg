@@ -33,8 +33,9 @@ public class StatController : MonoBehaviour
     {
         // simple system to start out.
         levelReqs = new int[maxLevel];
-        for (int i = 0; i < levelReqs.Length; i++) {
-            if (customLevelReqs[i] == 0) levelReqs[i] = levelSeed + levelSeed*i;
+        levelReqs[0] = levelSeed;
+        for (int i = 1; i < levelReqs.Length; i++) {
+            if (customLevelReqs[i] == 0) levelReqs[i] = (int) (levelReqs[i-1] * 1.05);
             else levelReqs[i] = customLevelReqs[i];
         }
     }
