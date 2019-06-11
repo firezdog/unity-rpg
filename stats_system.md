@@ -13,5 +13,8 @@
 * To allow user some freedom both in setting number of max level and max level variables, create separate array for custom scores (up to max allowed max level) and then fill in those scores when initializing.
 * Tutorial uses 105% of previous level for next level (exponential).
 ## Testing Leveling
+* Develop system that will level up the player (and increase stats?) _when the player gains enough experience for the next level_.
+* Plan: every update, levelUp() will run to check player experience -- if player's experience matches next level req's, level will be increased.
+* Testing can be done very simply -- just set initial experience past threshold and see if level goes up.
 ## Gaining Stats On Level Up
 ## Creating Game Manager

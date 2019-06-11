@@ -22,9 +22,10 @@ public class StatController : MonoBehaviour
 
     private int exp;
     private int level = 1;
+    private int expForNext;
 
     [SerializeField, Range(1, 100)] private int maxLevel = 100;
-    [SerializeField] private int levelSeed = 1000;
+    [SerializeField] private int levelSeed = 100;
     [SerializeField] private int[] customLevelReqs = new int[100];
     private int[] levelReqs;
     
@@ -38,11 +39,24 @@ public class StatController : MonoBehaviour
             if (customLevelReqs[i] == 0) levelReqs[i] = (int) (levelReqs[i-1] * 1.05);
             else levelReqs[i] = customLevelReqs[i];
         }
+        // test -- should level up
+        exp = 100;
+    }
+
+    void checkLevel() {
+        // zero-indexing: level N's requirements are listed in levelReqs[N-1]
+        expForNext = levelReqs[level-1] - exp;;
+        if (expForNext <= 0) levelUp(); 
+    }
+
+    void levelUp() {
+        level++;
+        // do some other stuff (stats increase)
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        checkLevel();
     }
 }
