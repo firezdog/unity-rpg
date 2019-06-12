@@ -16,5 +16,15 @@
 * Develop system that will level up the player (and increase stats?) _when the player gains enough experience for the next level_.
 * Plan: every update, levelUp() will run to check player experience -- if player's experience matches next level req's, level will be increased.
 * Testing can be done very simply -- just set initial experience past threshold and see if level goes up.
+* public IncreaseExp() -- only check level when experience is added (instead of at update)
+* tutorial substracts exp for next level to reset? (apparently 1.05 is not going to be enough -- you probably want 2.05x?)
+* uses input for test (Input.GetKeyDown)
+* next step -- stats go up on leveling (big scaling questions here)
 ## Gaining Stats On Level Up
+* tutorial
+* add to strength / defence on alternate levels
+* just use some multiplier for hp
+* remember to reset current hp (and mp)
+* for mp create array of mp level bonuses (I don't like this) -- similar to custom exp i set up...
+* indexOutOfRange errors when you reach maximum level and then you keep gaining exp -- instead add a guard
 ## Creating Game Manager
