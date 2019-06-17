@@ -25,19 +25,20 @@ public class UIFade : MonoBehaviour
     void Start() 
     {
         // without this, the scene defaults to the last used fade object, which is transparent (no fade from black effect).
-        setInstance();
+        fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, 1f);
+        instance = LoadHelper.setInstance<UIFade>(gameObject, this, instance);
+        // setInstance();
     }
 
-    private void setInstance()
-	{
-		if (instance == null)
-		{
-			instance = this;
-            fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, 1f);
-		}
-		else { Destroy(gameObject); }
-		DontDestroyOnLoad(gameObject);
-	}
+    // private void setInstance()
+	// {
+	// 	if (instance == null)
+	// 	{
+	// 		instance = this;
+	// 	}
+	// 	else { Destroy(gameObject); }
+	// 	DontDestroyOnLoad(gameObject);
+	// }
 
     // Start is called before the first frame update
     void Update()

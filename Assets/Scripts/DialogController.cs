@@ -23,7 +23,9 @@ public class DialogController : MonoBehaviour {
 
     void Awake() {
         // TODO: setInstance should be refactored since it is common to many classes.
-        setInstance();
+        // setInstance();
+        // not sure if this works yet, so above is commented out.
+        instance = LoadHelper.setInstance<DialogController>(gameObject, this, instance);
     }
 
     // Start is called before the first frame update
@@ -31,13 +33,13 @@ public class DialogController : MonoBehaviour {
         this.ToggleActive();
     }
 
-    private void setInstance() {
-		if (instance == null) {
-			instance = this;
-		}
-		else { Destroy(gameObject); }
-		DontDestroyOnLoad(gameObject);
-	}
+    // private void setInstance() {
+	// 	if (instance == null) {
+	// 		instance = this;
+	// 	}
+	// 	else { Destroy(gameObject); }
+	// 	DontDestroyOnLoad(gameObject);
+	// }
 
     void printText () {
         // TODO: this closes dialog on arrival at last line -- fix.

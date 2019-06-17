@@ -28,3 +28,7 @@
 * for mp create array of mp level bonuses (I don't like this) -- similar to custom exp i set up...
 * indexOutOfRange errors when you reach maximum level and then you keep gaining exp -- instead add a guard
 ## Creating Game Manager
+* we need a way to keep track of player stats (depending on the player profile)
+* game manager (hold game state) -- unity gives default icon
+* create game manager object to hold our new script (and load it with loader?)
+* create a static instance variable
