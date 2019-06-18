@@ -22,9 +22,6 @@ public class DialogController : MonoBehaviour {
     private static Regex signRegex = new Regex(@"^\[s\]");
 
     void Awake() {
-        // TODO: setInstance should be refactored since it is common to many classes.
-        // setInstance();
-        // not sure if this works yet, so above is commented out.
         instance = LoadHelper.setInstance<DialogController>(gameObject, this, instance);
     }
 
@@ -32,14 +29,6 @@ public class DialogController : MonoBehaviour {
     void Start () {
         this.ToggleActive();
     }
-
-    // private void setInstance() {
-	// 	if (instance == null) {
-	// 		instance = this;
-	// 	}
-	// 	else { Destroy(gameObject); }
-	// 	DontDestroyOnLoad(gameObject);
-	// }
 
     void printText () {
         // TODO: this closes dialog on arrival at last line -- fix.

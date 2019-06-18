@@ -28,17 +28,7 @@ public class PlayerController : MonoBehaviour
 	// make sure this is set for other scripts
 	void Awake()
 	{
-		setInstance();
-	}
-
-	private void setInstance()
-	{
-		if (instance == null)
-		{
-			instance = this;
-		}
-		else { Destroy(gameObject); }
-		DontDestroyOnLoad(gameObject);
+		instance = LoadHelper.setInstance<PlayerController>(gameObject, this, instance);
 	}
 
 	private void clampPlayer()

@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33da1a621a924544937b97b39ed733f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toPortal: start
+  toPortal: 
   toScene: 
-  loadWait: 5
+  loadWait: 0.5
   portalExit: {fileID: 4849944738437875975}

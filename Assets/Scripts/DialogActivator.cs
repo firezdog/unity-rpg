@@ -8,12 +8,12 @@ public class DialogActivator : MonoBehaviour
     [SerializeField] TextAsset textAsset;
 
     private bool focussed = false;
-    
     public void Focus() {
         focussed = true;
     }
 
     DialogController dc;
+
     // Start is called before the first frame update
     void Start()
     {

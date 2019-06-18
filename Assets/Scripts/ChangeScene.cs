@@ -11,18 +11,10 @@ public class ChangeScene : MonoBehaviour
 	public float loadWait = 1f;
 	public Transform portalExit;
 
-	private PlayerController p = PlayerController.instance;
-
 	void Start()
 	{
 		UIFade.instance.fadeOut();
-		if (p == null)
-		{
-			p = GameObject
-				.FindGameObjectWithTag("Player")
-				.GetComponent<PlayerController>();
-		}
-		if (p.getFrom() == toPortal) { p.transform.position = portalExit.position; }
+		if (PlayerController.instance.getFrom() == toPortal) { PlayerController.instance.transform.position = portalExit.position; }
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
@@ -31,7 +23,7 @@ public class ChangeScene : MonoBehaviour
 		{
 			UIFade.instance.fadeIn();
 			StartCoroutine(waitAndLoad());
-			p.setFrom(toPortal);
+			PlayerController.instance.setFrom(toPortal);
 		}
 	}
 

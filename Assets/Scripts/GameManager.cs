@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadHelper.setInstance<GameManager>(gameObject, this, instance);
+        instance = LoadHelper.setInstance<GameManager>(gameObject, this, instance);
     }
 
     // Update is called once per frame
