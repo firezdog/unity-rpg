@@ -31,7 +31,6 @@ public class DialogController : MonoBehaviour {
     }
 
     void printText () {
-        // TODO: this closes dialog on arrival at last line -- fix.
         if (currentLine == dialogLines.Length) { 
             close();
             return;
@@ -82,7 +81,6 @@ public class DialogController : MonoBehaviour {
         if(Input.GetButtonUp("Fire1")) { 
             StartCoroutine("DelayedToggleActive", 0.1f);
         }
-
     }
 
     IEnumerator DelayedToggleActive(float f) {
@@ -99,10 +97,8 @@ public class DialogController : MonoBehaviour {
 
     void clear() {
         StopAllCoroutines();
-        
         dialogText.text = "";
         dialogBadgeText.text = "";
-
         dialogLines = null;
         da = null;
         currentLine = 0;
