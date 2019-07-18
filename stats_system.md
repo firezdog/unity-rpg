@@ -31,4 +31,5 @@
 * we need a way to keep track of player stats (depending on the player profile)
 * game manager (hold game state) -- unity gives default icon
 * create game manager object to hold our new script (and load it with loader?)
-* create a static instance variable
+* create a static public instance variable and don't destroy on load
+* create referenc to stats

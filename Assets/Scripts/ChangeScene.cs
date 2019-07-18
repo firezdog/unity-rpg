@@ -10,7 +10,7 @@ public class ChangeScene : MonoBehaviour
 	public string toScene;
 	public float loadWait = 1f;
 	public Transform portalExit;
-
+	
 	void Start()
 	{
 		UIFade.instance.fadeOut();
