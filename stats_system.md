@@ -32,4 +32,4 @@
 * game manager (hold game state) -- unity gives default icon
 * create game manager object to hold our new script (and load it with loader?)
 * create a static public instance variable and don't destroy on load
-* create referenc to stats
+* create referenc to an array of stat controllers (in case we want more than one character)
