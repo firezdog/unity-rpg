@@ -32,4 +32,5 @@
 * game manager (hold game state) -- unity gives default icon
 * create game manager object to hold our new script (and load it with loader?)
 * create a static public instance variable and don't destroy on load
-* create referenc to an array of stat controllers (in case we want more than one character)
+* create reference to an array of stat controllers (in case we want more than one character)
+* Note about "Loader" -- the loader *script* loads prefabs -- but under the loader prefab are game objects that get instantiated with it in each scene and are separate from the script behavior.  We (probably) DON'T want the loader to be a singleton, because the objects instantiated with it, like the grid, will have different values between scenes (e.g. different maps) and we want to be able to instantiate a new loader whose instances have preset values in each scene.
