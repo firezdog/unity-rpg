@@ -5,23 +5,23 @@ using UnityEngine;
 public class StatController : MonoBehaviour
 {
 
-    private string playerName;
-    private Sprite playerImage;
+    [SerializeField] private string playerName;
+    [SerializeField] private Sprite playerImage;
 
-    private int currentHP = 100;
-    private int maxHP = 100;
-    private int currentMP = 100;
-    private int maxMP = 100;
+    [SerializeField] private int currentHP = 100;
+    [SerializeField] private int maxHP = 100;
+    [SerializeField] private int currentMP = 100;
+    [SerializeField] private int maxMP = 100;
 
-    private int attack = 1;
-    private int weaponBonus;
-    private string equippedWeapon;
-    private int defence = 1;
-    private int armorBonus;
-    private string equippedArmor;
+    [SerializeField] private int attack = 1;
+    [SerializeField] private int weaponBonus;
+    [SerializeField] private string equippedWeapon;
+    [SerializeField] private int defence = 1;
+    [SerializeField] private int armorBonus;
+    [SerializeField] private string equippedArmor;
 
-    private int exp;
-    private int level = 1;
+    [SerializeField] private int exp;
+    [SerializeField] private int level = 1;
 
     [SerializeField, Range(1, 100)] private int maxLevel = 100;
     [SerializeField] private int levelSeed = 100;
@@ -37,7 +37,7 @@ public class StatController : MonoBehaviour
         levelReqs = new int[maxLevel];
         // customLevelReqs[0] can override the level seed.
         levelReqs[0] = levelSeed;
-        for (int i = 0; i < levelReqs.Length; i++) {
+        for (int i = 1; i < levelReqs.Length; i++) {
             levelReqs[i] = customLevelReqs[i] == 0 ?
                 (int) (levelReqs[i-1] * 2.05) :
                 customLevelReqs[i];
