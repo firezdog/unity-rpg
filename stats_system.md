@@ -34,4 +34,4 @@
 * create a static public instance variable and don't destroy on load
 * create reference to an array of stat controllers (in case we want more than one character)
 * Note about "Loader" -- the loader *script* loads prefabs -- but under the loader prefab are game objects that get instantiated with it in each scene and are separate from the script behavior.  We (probably) DON'T want the loader to be a singleton, because the objects instantiated with it, like the grid, will have different values between scenes (e.g. different maps) and we want to be able to instantiate a new loader whose instances have preset values in each scene.
-  * This leads to somewhat of a problem -- because the game manager is a singleton that gets attached to the loader, but (at least for testing purposes) the game manager might have specific values assigned to it (specific characters under it).
+  * This leads to somewhat of a problem -- because the game manager is a singleton that gets attached to the loader (like the player sprite), but (at least for testing purposes) the game manager might have specific values assigned to it (specific characters under it).
