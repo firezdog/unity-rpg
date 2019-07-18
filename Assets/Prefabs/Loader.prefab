@@ -48,6 +48,7 @@ MonoBehaviour:
   toLoad:
   - {fileID: 7181534472291853103, guid: f67cbe2a1a95afa439d0a23d308c95aa, type: 3}
   - {fileID: 4709373680141160487, guid: 294cb541d492c483985f953ec7fa76e9, type: 3}
+  - {fileID: 4915138997446716787, guid: 9dd884ed0f5c74830ae302c43f12861f, type: 3}
 --- !u!1001 &2062193242
 PrefabInstance:
   m_ObjectHideFlags: 0
