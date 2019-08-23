@@ -13,3 +13,20 @@
         * consistent positioning: you could edit it by hand (calculate) but Unity has a system -- create "buttons" object with children = buttons
         * vertical layout component on "buttons"
             * now you can specify the margin for each
+* Add panel within panel, top-right: char-info
+    * character image (stop stretching -- preserve aspect)
+        * we want this to be dynamic based on which icon the player is using
+    * text for character name (w/ best fit, min and max size)
+    * text for different attributes (HP, MP, next level, level) 
+        * -- is there also a vertical layout for the text? (grid w/ rows and columns)
+        * slider for exp to next level
+            * remove background image
+                * grayish color
+            * remove sprite from fill area
+                * blue
+            * handle slide area: delete the handle
+            * changing values will fill up the exp bar 
+                * (never totally full or empty -- make fill go back to edge for start and end)
+            * we also want text w/ precise value: text under exp in center of slider
+    * duplicate for three characters (are these party members?) with a vertical layout group
+    * third character is deactivated (object unchecked in the editor) option to deactivate
