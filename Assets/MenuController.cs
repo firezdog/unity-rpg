@@ -23,7 +23,7 @@ public class MenuController : MonoBehaviour
     private void toggleMenu()
     {
         /* this isn't good -- because both menu and dialog create a "player
-        cannot move state, it may be better to make that state part of the
+        cannot move" state, it may be better to make that state part of the
         global singleton */
         bool menuButtonPushed = Input.GetButtonDown("Fire2");
         bool menuIsActive = menu.activeInHierarchy;
