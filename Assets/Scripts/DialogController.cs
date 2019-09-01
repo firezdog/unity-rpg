@@ -92,7 +92,7 @@ public class DialogController : MonoBehaviour {
     public void ToggleActive() {
         dialogBox.SetActive(false);
         clear();
-        PlayerController.instance.SetCanMove(true);
+        PlayerController.instance.setCanMove(true);
     }
 
     void clear() {
@@ -108,7 +108,7 @@ public class DialogController : MonoBehaviour {
     public void ToggleActive(string[] lines, DialogActivator instance) {
         da = instance;
         dialogLines = lines;
-        PlayerController.instance.SetCanMove(false);
+        PlayerController.instance.setCanMove(false);
         dialogBox.SetActive(true);
         StartCoroutine("typeText");
     }

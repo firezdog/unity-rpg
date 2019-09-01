@@ -6,6 +6,7 @@ using UnityEngine;
 public class MenuController : MonoBehaviour
 {
     [SerializeField] GameObject menu;
+    PlayerController pc = PlayerController.instance;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,17 @@ public class MenuController : MonoBehaviour
 
     private void toggleMenu()
     {
-        if (Input.GetButtonDown("Fire2")) menu.SetActive(!menu.activeInHierarchy);
+        /* this isn't good -- because both menu and dialog create a "player
+        cannot move state, it may be better to make that state part of the
+        global singleton */
+        bool menuButtonPushed = Input.GetButtonDown("Fire2");
+        bool menuIsActive = menu.activeInHierarchy;
+        if (menuButtonPushed && !menuIsActive) {
+            menu.SetActive(true);
+            pc.setCanMove(false);
+        } else if (menuButtonPushed && menuIsActive) {
+            menu.SetActive(false);
+            pc.setCanMove(true);
+        }
     }
 }

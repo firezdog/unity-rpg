@@ -15,7 +15,11 @@ public class PlayerController : MonoBehaviour
 	public void setFrom(string value) { from = value; }
 
 	private bool canMove = true;
-	public void SetCanMove(bool option) { canMove = option; }
+	public void setCanMove(bool option) { canMove = option; }
+
+	public void toggleCanMove() {
+		canMove = !canMove;
+	}
 
 	private Vector3 mapMin;
 	private Vector3 mapMax;
