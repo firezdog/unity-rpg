@@ -37,3 +37,5 @@
 * Desiderata / bugs: player can still move.
     * Player can also move in loading areas
 # Stop Player Movement
+* Note that simply toggling player movement false when menu or dialog box are active and then true when deactivated leads to a bug where player movement is incorrectly toggled on cross-activation.  I'm not sure the best way to fix this bug, so I'm leaving it for now.
+    * I wonder if it wouldn't be best to have a global menuOpen, say in GameManager, and then have GameManger set player as being able to move or not move based on that state (we need to make player movement reactive)

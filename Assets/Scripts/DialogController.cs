@@ -15,7 +15,7 @@ public class DialogController : MonoBehaviour {
     int currentLine;
     bool focussed;
     DialogActivator da;
-
+    PlayerController pc;
     public static DialogController instance;
 
     private static Regex nameRegex = new Regex(@"^\[n\]([a-zA-Z]+)");
@@ -27,6 +27,7 @@ public class DialogController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start () {
+        pc = PlayerController.instance;
         this.ToggleActive();
     }
 
@@ -92,7 +93,7 @@ public class DialogController : MonoBehaviour {
     public void ToggleActive() {
         dialogBox.SetActive(false);
         clear();
-        PlayerController.instance.setCanMove(true);
+        pc.setCanMove(true);
     }
 
     void clear() {
@@ -105,10 +106,10 @@ public class DialogController : MonoBehaviour {
         focussed = false;
     }
 
-    public void ToggleActive(string[] lines, DialogActivator instance) {
-        da = instance;
+    public void ToggleActive(string[] lines, DialogActivator da) {
+        this.da = da;
         dialogLines = lines;
-        PlayerController.instance.setCanMove(false);
+        pc.setCanMove(false);
         dialogBox.SetActive(true);
         StartCoroutine("typeText");
     }
@@ -116,7 +117,7 @@ public class DialogController : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         if (dialogBox.activeInHierarchy) {
-            printText ();
+            printText();
         }
     }
 }
