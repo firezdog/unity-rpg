@@ -30,3 +30,10 @@
             * we also want text w/ precise value: text under exp in center of slider
     * duplicate for three characters (are these party members?) with a vertical layout group
     * third character is deactivated (object unchecked in the editor) option to deactivate
+# Toggling The Menu
+* Create script for menu w/ reference to game menu
+* Desired functionality -- open menu on right click (fire2)
+* toggle activeInHierarchy
+* Desiderata / bugs: player can still move.
+    * Player can also move in loading areas
+# Stop Player Movement
