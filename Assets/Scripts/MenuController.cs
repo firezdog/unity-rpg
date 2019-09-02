@@ -6,18 +6,18 @@ using UnityEngine;
 public class MenuController : MonoBehaviour
 {
     [SerializeField] GameObject menu;
-    PlayerController pc;
+	 GameManager gm;
 
     // Start is called before the first frame update
     void Start()
     {
-        pc = PlayerController.instance;
+		gm = GameManager.instance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        toggleMenu();
+		toggleMenu();
     }
 
     private void toggleMenu()
@@ -26,10 +26,10 @@ public class MenuController : MonoBehaviour
         if (menuButtonPushed) {
             if (!menu.activeInHierarchy) {
                 menu.SetActive(true);
-                pc.setCanMove(false);
+				gm.StatMenuOpen = true;
             } else {
                 menu.SetActive(false);
-                pc.setCanMove(true);
+				gm.StatMenuOpen = false;
             }
         }
     }
