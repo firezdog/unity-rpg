@@ -14,8 +14,9 @@ public class DialogController : MonoBehaviour {
     string[] dialogLines;
     int currentLine;
     bool focussed;
+    
     DialogActivator da;
-    PlayerController pc;
+    GameManager gm;
     public static DialogController instance;
 
     private static Regex nameRegex = new Regex(@"^\[n\]([a-zA-Z]+)");
@@ -27,7 +28,7 @@ public class DialogController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start () {
-        pc = PlayerController.instance;
+        gm = GameManager.instance;
         this.ToggleActive();
     }
 
@@ -78,22 +79,26 @@ public class DialogController : MonoBehaviour {
         currentLine++;
     }
 
-    void close () {
-        if(Input.GetButtonUp("Fire1")) { 
-            StartCoroutine("DelayedToggleActive", 0.1f);
-        }
+    // => inactive
+    public void ToggleActive() {
+        dialogBox.SetActive(false);
+        clear();
+        gm.DialogOpen = false;
+    }
+
+    // => active
+    public void ToggleActive(string[] lines, DialogActivator da) {
+        gm.DialogOpen = true;
+        this.da = da;
+        dialogLines = lines;
+        dialogBox.SetActive(true);
+        StartCoroutine("typeText");
     }
 
     IEnumerator DelayedToggleActive(float f) {
         yield return new WaitForSeconds(f);
         da.Focus();
         this.ToggleActive();
-    }
-
-    public void ToggleActive() {
-        dialogBox.SetActive(false);
-        clear();
-        pc.setCanMove(true);
     }
 
     void clear() {
@@ -106,12 +111,10 @@ public class DialogController : MonoBehaviour {
         focussed = false;
     }
 
-    public void ToggleActive(string[] lines, DialogActivator da) {
-        this.da = da;
-        dialogLines = lines;
-        pc.setCanMove(false);
-        dialogBox.SetActive(true);
-        StartCoroutine("typeText");
+    void close () {
+        if(Input.GetButtonUp("Fire1")) { 
+            StartCoroutine("DelayedToggleActive", 0.1f);
+        }
     }
 
     // Update is called once per frame
