@@ -13,17 +13,17 @@ public class ChangeScene : MonoBehaviour
 	
 	void Start()
 	{
-		UIFade.instance.fadeOut();
 		if (PlayerController.instance.getFrom() == toPortal) { PlayerController.instance.transform.position = portalExit.position; }
+		UIFade.instance.fadeOut();
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.tag == "Player" && toPortal != "start")
 		{
+			PlayerController.instance.setFrom(toPortal);
 			UIFade.instance.fadeIn();
 			StartCoroutine(waitAndLoad());
-			PlayerController.instance.setFrom(toPortal);
 		}
 	}
 

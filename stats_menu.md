@@ -39,3 +39,5 @@
 # Stop Player Movement
 * Note that simply toggling player movement false when menu or dialog box are active and then true when deactivated leads to a bug where player movement is incorrectly toggled on cross-activation.  I'm not sure the best way to fix this bug, so I'm leaving it for now.
     * I wonder if it wouldn't be best to have a global menuOpen, say in GameManager, and then have GameManger set player as being able to move or not move based on that state (we need to make player movement reactive)
+* Solution: we manage the state using the Game Manager -- only Game Manager is allowed to set player movement, and the other controllers make calls to the game manager.
+* If any of the bools is true, we keep player from moving.

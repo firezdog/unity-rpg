@@ -9,14 +9,15 @@ public class GameManager : MonoBehaviour
 	public static GameManager instance;
     private StatController[] statControllers;
     
-    private bool statMenuOpen;
-    private bool dialogOpen;
+    private bool statMenuOpen, dialogOpen, fadingBetweenAreas;
     PlayerController pc;
 
     public bool DialogOpen 
         { get => dialogOpen; set => dialogOpen = value; }
     public bool StatMenuOpen 
         { get => statMenuOpen; set => statMenuOpen = value; }
+    public bool FadingBetweenAreas
+        { get => fadingBetweenAreas; set => fadingBetweenAreas = value; }
 
     // Start is called before the first frame update
     void Awake()
@@ -37,8 +38,6 @@ public class GameManager : MonoBehaviour
 
     private void togglePlayerMovement()
     {
-        bool menuOpen = StatMenuOpen || DialogOpen;
-        if (menuOpen) pc.setCanMove(false);
-        else pc.setCanMove(true);
+		pc.setCanMove(!(StatMenuOpen || DialogOpen || fadingBetweenAreas));
     }
 }

@@ -15,7 +15,9 @@ public class PlayerController : MonoBehaviour
 	public void setFrom(string value) { from = value; }
 
 	private bool canMove = true;
-	public void setCanMove(bool option) { canMove = option; }
+	public void setCanMove(bool option) {
+		canMove = option;
+	}
 
 	public void toggleCanMove() {
 		canMove = !canMove;
@@ -50,6 +52,9 @@ public class PlayerController : MonoBehaviour
 		if (canMove) {
 			animatePlayer();
 			clampPlayer();
+		} else {
+			playerBody.velocity = new Vector2(0, 0);
+			playerAnimator.SetBool("stopped", true);
 		}
 	}
 
