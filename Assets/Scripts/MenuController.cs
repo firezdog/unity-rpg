@@ -2,57 +2,71 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] GameObject menu;
-	GameManager gm;
+  [SerializeField] GameObject menu;
+  GameManager gm;
 
-    // Start is called before the first frame update
-    void Start()
+  // Start is called before the first frame update
+  void Start()
+  {
+    gm = GameManager.instance;
+  }
+
+  // Update is called once per frame
+  void Update()
+  {
+    toggleMenu();
+  }
+
+  private void toggleMenu()
+  {
+    bool menuButtonPushed = Input.GetButtonDown("Fire2");
+    if (menuButtonPushed)
     {
-		gm = GameManager.instance;
+      if (!menu.activeInHierarchy)
+      {
+        updateMenu();
+        menu.SetActive(true);
+        gm.StatMenuOpen = true;
+      }
+      else
+      {
+        menu.SetActive(false);
+        gm.StatMenuOpen = false;
+      }
     }
+  }
 
-    // Update is called once per frame
-    void Update()
+  private void updateMenu()
+  {
+    StatController[] characters = gm.StatControllers;
+    Transform[] characterFields = getMenuCharacterFields();
+    for (int i = 0; i < characters.Length; i++)
     {
-		toggleMenu();
+      StatController currentCharacter = characters[i];
+      Transform characterColumn = characterFields[i].Find("Character");
+      characterColumn.Find("CharacterName").GetComponent<Text>().text = currentCharacter.PlayerName;
+      characterColumn.Find("CharacterImage").GetComponent<Image>().sprite = currentCharacter.PlayerImage;
+      Transform infoColumn = characterFields[i].Find("Information");
+      Transform status = infoColumn.Find("Status");
+      status.Find("CharacterHP").GetComponent<Text>().text = $"Health: {currentCharacter.CurrentHP}/{currentCharacter.MaxHP}";
+      status.Find("CharacterMP").GetComponent<Text>().text = $"Magic: {currentCharacter.CurrentMP}/{currentCharacter.MaxMP}";
+      status.Find("CharacterLevel").GetComponent<Text>().text = currentCharacter.Level.ToString();
+      infoColumn.Find("NextLevelSlider").GetComponent<Slider>().value = currentCharacter.percentToLevel();
     }
+  }
 
-    private void toggleMenu()
+  private Transform[] getMenuCharacterFields()
+  {
+    Transform characters = menu.transform.Find("Characters");
+    Transform[] characterFields = new Transform[characters.childCount];
+    for (int i = 0; i < characters.childCount; i++)
     {
-        bool menuButtonPushed = Input.GetButtonDown("Fire2");
-        if (menuButtonPushed) {
-            if (!menu.activeInHierarchy) {
-				updateMenu();
-                menu.SetActive(true);
-				gm.StatMenuOpen = true;
-            } else {
-                menu.SetActive(false);
-				gm.StatMenuOpen = false;
-            }
-        }
+      characterFields[i] = characters.GetChild(i);
     }
-
-	private void updateMenu()
-	{
-		StatController[] characters = gm.StatControllers;
-		Transform[] characterFields = getMenuCharacterFields();
-		foreach(Transform characterField in characterFields)
-		{
-			print(characterField.name);
-		}
-	}
-
-	private Transform[] getMenuCharacterFields()
-	{
-		Transform characters = menu.transform.Find("Characters");
-		Transform[] characterFields = new Transform[characters.childCount];
-		for (int i = 0; i < characters.childCount; i++)
-		{
-			characterFields[i] = characters.GetChild(i);
-		}
-		return characterFields;
-	}
+    return characterFields;
+  }
 }
