@@ -6,7 +6,7 @@ using UnityEngine;
 public class MenuController : MonoBehaviour
 {
     [SerializeField] GameObject menu;
-	 GameManager gm;
+	GameManager gm;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +25,7 @@ public class MenuController : MonoBehaviour
         bool menuButtonPushed = Input.GetButtonDown("Fire2");
         if (menuButtonPushed) {
             if (!menu.activeInHierarchy) {
+				updateMenu();
                 menu.SetActive(true);
 				gm.StatMenuOpen = true;
             } else {
@@ -33,4 +34,25 @@ public class MenuController : MonoBehaviour
             }
         }
     }
+
+	private void updateMenu()
+	{
+		StatController[] characters = gm.StatControllers;
+		Transform[] characterFields = getMenuCharacterFields();
+		foreach(Transform characterField in characterFields)
+		{
+			print(characterField.name);
+		}
+	}
+
+	private Transform[] getMenuCharacterFields()
+	{
+		Transform characters = menu.transform.Find("Characters");
+		Transform[] characterFields = new Transform[characters.childCount];
+		for (int i = 0; i < characters.childCount; i++)
+		{
+			characterFields[i] = characters.GetChild(i);
+		}
+		return characterFields;
+	}
 }

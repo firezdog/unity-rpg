@@ -41,3 +41,6 @@
     * I wonder if it wouldn't be best to have a global menuOpen, say in GameManager, and then have GameManger set player as being able to move or not move based on that state (we need to make player movement reactive)
 * Solution: we manage the state using the Game Manager -- only Game Manager is allowed to set player movement, and the other controllers make calls to the game manager.
 * If any of the bools is true, we keep player from moving.
+# Binding Game Manager Data To Menu
+* Strategy: when the player opens the menu, the menu values will be updated in accordance with the model.
+	* Challenge: do this is a programmatic way -- the chars are under GameManager prefab (instance) and the displays are under the menu

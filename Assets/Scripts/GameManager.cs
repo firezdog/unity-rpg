@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
 
 	public static GameManager instance;
-    private StatController[] statControllers;
+    [SerializeField] private StatController[] statControllers;
     
     private bool statMenuOpen, dialogOpen, fadingBetweenAreas;
     PlayerController pc;
@@ -18,9 +18,10 @@ public class GameManager : MonoBehaviour
         { get => statMenuOpen; set => statMenuOpen = value; }
     public bool FadingBetweenAreas
         { get => fadingBetweenAreas; set => fadingBetweenAreas = value; }
+	public StatController[] StatControllers { get => statControllers; }
 
-    // Start is called before the first frame update
-    void Awake()
+	// Start is called before the first frame update
+	void Awake()
     {
         instance = LoadHelper.setInstance<GameManager>(gameObject, this, instance);
     }
