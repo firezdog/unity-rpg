@@ -37,6 +37,7 @@ public class StatController : MonoBehaviour
   public int CurrentMP { get => currentMP; set => currentMP = value; }
   public int MaxMP { get => maxMP; set => maxMP = value; }
   public int Level { get => level; set => level = value; }
+  public int Exp { get => exp; set => exp = value; }
 
   // Start is called before the first frame update
   void Start()
@@ -54,7 +55,13 @@ public class StatController : MonoBehaviour
   }
 
   public float percentToLevel() {
-	  return (float) exp / levelReqs[level - 1];
+    if (Level == maxLevel) return 1;
+	  return (float) Exp / toNextLevel();
+  }
+
+  public int toNextLevel() {
+    if (Level == maxLevel) return Exp;
+    return levelReqs[level - 1];
   }
 
   public void addExp(int gain)
@@ -62,8 +69,8 @@ public class StatController : MonoBehaviour
     // zero-indexing: level N's requirements are listed in levelReqs[N-1]
     // note the requirement to get to level N + 1 is level N's level up requirement (a bit confusing, I know)
     if (Level == maxLevel) return;
-    exp += gain;
-    int expForNext = levelReqs[Level - 1] - exp;
+    Exp += gain;
+    int expForNext = levelReqs[Level - 1] - Exp;
     if (expForNext <= 0) levelUp();
   }
 

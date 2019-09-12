@@ -55,8 +55,10 @@ public class MenuController : MonoBehaviour
         Transform status = infoColumn.Find("Status");
         status.Find("CharacterHP").GetComponent<Text>().text = $"Health: {currentCharacter.CurrentHP}/{currentCharacter.MaxHP}";
         status.Find("CharacterMP").GetComponent<Text>().text = $"Magic: {currentCharacter.CurrentMP}/{currentCharacter.MaxMP}";
-        status.Find("CharacterLevel").GetComponent<Text>().text = currentCharacter.Level.ToString();
-        infoColumn.Find("NextLevelSlider").GetComponent<Slider>().value = currentCharacter.percentToLevel();
+        status.Find("CharacterLevel").GetComponent<Text>().text = $"Level: {currentCharacter.Level}";
+        Transform nextLevelSlider = infoColumn.Find("NextLevelSlider");
+        nextLevelSlider.GetComponent<Slider>().value = currentCharacter.percentToLevel();
+        nextLevelSlider.Find("Experience").GetComponent<Text>().text = $"{currentCharacter.Exp}/{currentCharacter.toNextLevel()}";
       } else {
         characterFields[i].gameObject.SetActive(false);
       }
