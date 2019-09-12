@@ -47,15 +47,19 @@ public class MenuController : MonoBehaviour
     for (int i = 0; i < characters.Length; i++)
     {
       StatController currentCharacter = characters[i];
-      Transform characterColumn = characterFields[i].Find("Character");
-      characterColumn.Find("CharacterName").GetComponent<Text>().text = currentCharacter.PlayerName;
-      characterColumn.Find("CharacterImage").GetComponent<Image>().sprite = currentCharacter.PlayerImage;
-      Transform infoColumn = characterFields[i].Find("Information");
-      Transform status = infoColumn.Find("Status");
-      status.Find("CharacterHP").GetComponent<Text>().text = $"Health: {currentCharacter.CurrentHP}/{currentCharacter.MaxHP}";
-      status.Find("CharacterMP").GetComponent<Text>().text = $"Magic: {currentCharacter.CurrentMP}/{currentCharacter.MaxMP}";
-      status.Find("CharacterLevel").GetComponent<Text>().text = currentCharacter.Level.ToString();
-      infoColumn.Find("NextLevelSlider").GetComponent<Slider>().value = currentCharacter.percentToLevel();
+      if (currentCharacter.gameObject.activeInHierarchy) {
+        Transform characterColumn = characterFields[i].Find("Character");
+        characterColumn.Find("CharacterName").GetComponent<Text>().text = currentCharacter.PlayerName;
+        characterColumn.Find("CharacterImage").GetComponent<Image>().sprite = currentCharacter.PlayerImage;
+        Transform infoColumn = characterFields[i].Find("Information");
+        Transform status = infoColumn.Find("Status");
+        status.Find("CharacterHP").GetComponent<Text>().text = $"Health: {currentCharacter.CurrentHP}/{currentCharacter.MaxHP}";
+        status.Find("CharacterMP").GetComponent<Text>().text = $"Magic: {currentCharacter.CurrentMP}/{currentCharacter.MaxMP}";
+        status.Find("CharacterLevel").GetComponent<Text>().text = currentCharacter.Level.ToString();
+        infoColumn.Find("NextLevelSlider").GetComponent<Slider>().value = currentCharacter.percentToLevel();
+      } else {
+        characterFields[i].gameObject.SetActive(false);
+      }
     }
   }
 
