@@ -44,3 +44,8 @@
 # Binding Game Manager Data To Menu
 * Strategy: when the player opens the menu, the menu values will be updated in accordance with the model.
 	* Challenge: do this is a programmatic way -- the chars are under GameManager prefab (instance) and the displays are under the menu
+# More Menus
+* status and items menu etc. -- ability to switch between them when clicking on the buttons
+* close button (and clear on close)
+# Stats Menu
+* Buttons for each character, with character information displaying to the right
