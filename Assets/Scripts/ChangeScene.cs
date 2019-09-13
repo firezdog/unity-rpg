@@ -10,7 +10,7 @@ public class ChangeScene : MonoBehaviour
 	public string toScene;
 	public float loadWait = 1f;
 	public Transform portalExit;
-	
+
 	void Start()
 	{
 		if (PlayerController.instance.getFrom() == toPortal) { PlayerController.instance.transform.position = portalExit.position; }
@@ -27,7 +27,8 @@ public class ChangeScene : MonoBehaviour
 		}
 	}
 
-	private IEnumerator waitAndLoad() {
+	private IEnumerator waitAndLoad()
+	{
 		yield return new WaitForSeconds(loadWait);
 		SceneManager.LoadScene(toScene);
 	}

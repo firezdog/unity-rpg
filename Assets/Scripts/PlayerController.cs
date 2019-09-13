@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,25 +7,28 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] Rigidbody2D playerBody;
 
 	public static PlayerController instance;
-	
+
 	// for use with portal elements.
 	private string from = "start";
 	public string getFrom() { return from; }
 	public void setFrom(string value) { from = value; }
 
 	private bool canMove = true;
-	public void setCanMove(bool option) {
+	public void setCanMove(bool option)
+	{
 		canMove = option;
 	}
 
-	public void toggleCanMove() {
+	public void toggleCanMove()
+	{
 		canMove = !canMove;
 	}
 
 	private Vector3 mapMin;
 	private Vector3 mapMax;
 
-	public void setBounds(Vector3 mapMinValue, Vector3 mapMaxValue) {
+	public void setBounds(Vector3 mapMinValue, Vector3 mapMaxValue)
+	{
 		mapMin = mapMinValue + new Vector3(1f, 1f, 0);
 		mapMax = mapMaxValue - new Vector3(1f, 1f, 0);
 	}
@@ -49,10 +51,13 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (canMove) {
+		if (canMove)
+		{
 			animatePlayer();
 			clampPlayer();
-		} else {
+		}
+		else
+		{
 			playerBody.velocity = new Vector2(0, 0);
 			playerAnimator.SetBool("stopped", true);
 		}
