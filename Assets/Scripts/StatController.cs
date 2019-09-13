@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class StatController : MonoBehaviour
+public class StatController : MonoBehaviour 
 {
 
 	[SerializeField] private string playerName;
