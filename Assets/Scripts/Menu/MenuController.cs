@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityRPG;
 
 public class MenuController : MonoBehaviour
@@ -23,12 +22,18 @@ public class MenuController : MonoBehaviour
 		ToggleMenu();
 	}
 
+	public void ChangeCurrentPanel(GameObject panel) {
+		currentPanel.GetComponent<IMenuPanel>().Blur();
+		panel.GetComponent<IMenuPanel>().Activate();
+		currentPanel = panel;
+	}
+
 	private void ToggleMenu()
 	{
 		bool menuButtonPushed = Input.GetButtonDown("Fire2");
 		if (menuButtonPushed)
 		{
-			if (!menu.activeInHierarchy && !gm.DialogOpen)
+			if (!menu.activeInHierarchy && !gm.DialogOpen && !gm.FadingBetweenAreas)
 			{
 				currentPanel.GetComponent<IMenuPanel>().Activate();
 				menu.SetActive(true);
