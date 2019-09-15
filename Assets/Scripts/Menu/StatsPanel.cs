@@ -1,15 +1,42 @@
-﻿using UnityEngine;
+﻿using UnityEngine.UI;
+using UnityEngine;
 using UnityRPG;
+using System;
 
 public class StatsPanel : MonoBehaviour, IMenuPanel
 {
-    public void Activate()
-	{
-		gameObject.SetActive(true);
-	}
+  [SerializeField] GameObject buttonsPanelPrefab;
+	[SerializeField] GameObject button;
+  GameManager gm;
+	GameObject buttonsPanelInstance;
 
-	public void Blur()
-	{
-		gameObject.SetActive(false);
-	}
+  void Awake()
+  {
+    gm = GameManager.instance;
+  }
+
+  public void Activate()
+  {
+    gameObject.SetActive(true);
+		GenerateButtons();
+  }
+
+  private void GenerateButtons()
+  {
+		buttonsPanelInstance = Instantiate(buttonsPanelPrefab);
+		buttonsPanelInstance.transform.SetParent(gameObject.transform, false);
+		StatController[] characters = gm.StatControllers;
+		print(characters);
+		foreach (StatController character in characters) 
+		{
+			GameObject newButton = Instantiate(button);
+			newButton.transform.SetParent(buttonsPanelInstance.transform, false);
+		}
+  }
+
+  public void Blur()
+  {
+    gameObject.SetActive(false);
+		Destroy(buttonsPanelInstance);
+  }
 }
