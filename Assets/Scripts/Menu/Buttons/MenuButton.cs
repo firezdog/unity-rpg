@@ -6,12 +6,14 @@ public class MenuButton : MonoBehaviour {
 	[SerializeField] private GameObject panel;
 	private MenuController mc;
 
-	void Start() {
+	void Start() 
+	{
 		gameObject.GetComponent<Button>().onClick.AddListener(OnClick);
 		mc = transform.GetComponentInParent<MenuController>();
 	}
 
-	void OnClick() {
+	void OnClick() 
+	{
 		mc.ChangeCurrentPanel(panel);
 	}
 }
