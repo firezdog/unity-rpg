@@ -3521,6 +3521,7 @@ MonoBehaviour:
   armor: {fileID: 5100817970971756406}
   defenceBonus: {fileID: 1129222817384157965}
   nextLevel: {fileID: 6685274585375555712}
+  charImage: {fileID: 1054036851611424784}
 --- !u!1 &5042838133895956603
 GameObject:
   m_ObjectHideFlags: 0

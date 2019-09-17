@@ -8,10 +8,13 @@ public class StatsPanel : MonoBehaviour, IMenuPanel
 	[SerializeField] GameObject buttonsPanelPrefab;
 	[SerializeField] GameObject button;
 	[SerializeField] Text charName, hp, mp, strength, defence, weapon, attackBonus, armor, defenceBonus, nextLevel;
+	[SerializeField] Image charImage;
 
 	GameManager gm;
 	GameObject buttonsPanelInstance;
 	StatController currentlyDisplayed;
+
+	public StatController CurrentlyDisplayed { get => currentlyDisplayed; set => currentlyDisplayed = value; }
 
 	void Awake()
 	{
@@ -24,6 +27,7 @@ public class StatsPanel : MonoBehaviour, IMenuPanel
 
   	private void SetStats()
   	{
+		charImage.sprite = currentlyDisplayed.PlayerImage;
 		charName.text = currentlyDisplayed.PlayerName;
 		hp.text = $"{currentlyDisplayed.CurrentHP}/{currentlyDisplayed.MaxHP}";
 		mp.text = $"{currentlyDisplayed.CurrentMP}/{currentlyDisplayed.MaxMP}";
@@ -36,11 +40,11 @@ public class StatsPanel : MonoBehaviour, IMenuPanel
 		nextLevel.text = $"{currentlyDisplayed.toNextLevel()}";
   	}
 
-  public void Activate()
+	public void Activate()
 	{
 		gameObject.SetActive(true);
-		GenerateButtons();
 		currentlyDisplayed = gm.StatControllers[0];
+		GenerateButtons();
 	}
 
 	private void GenerateButtons()
@@ -51,15 +55,19 @@ public class StatsPanel : MonoBehaviour, IMenuPanel
 		print(characters);
 		foreach (StatController character in characters) 
 		{
+			if (!character.gameObject.activeInHierarchy) continue;
 			GameObject newButton = Instantiate(button);
 			newButton.transform.SetParent(buttonsPanelInstance.transform, false);
-			newButton.GetComponent<StatButton>().Character = character;
+			StatButton buttonScript = newButton.GetComponent<StatButton>();
+			buttonScript.Character = character;
+			buttonScript.SP = this;
 		}
 	}
 
 	public void Blur()
 	{
 		gameObject.SetActive(false);
+		currentlyDisplayed = gm.StatControllers[0];
 		Destroy(buttonsPanelInstance);
 	}
 }
