@@ -31,6 +31,7 @@ public class StatsPanel : MonoBehaviour, IMenuPanel
 		{
 			GameObject newButton = Instantiate(button);
 			newButton.transform.SetParent(buttonsPanelInstance.transform, false);
+      newButton.GetComponent<StatButton>().Character = character;
 		}
   }
 

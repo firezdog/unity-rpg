@@ -1,22 +1,32 @@
-﻿using UnityEngine.UI;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class StatButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
+	private StatController character;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public StatController Character { set => character = value; }
 
-    public void OnClick() {
-        print("hello");
-    }
+	// Start is called before the first frame update
+	void Start()
+	{
+		buttonText().text = character.name;
+	}
+
+	// Update is called once per frame
+	void Update()
+	{
+
+	}
+
+	void OnClick()
+	{
+
+	}
+
+	Text buttonText() {
+		return gameObject.transform.GetComponentInChildren<Text>();
+	}
 
 }
