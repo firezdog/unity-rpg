@@ -36,9 +36,15 @@ public class StatController : MonoBehaviour
 	public int MaxMP { get => maxMP; set => maxMP = value; }
 	public int Level { get => level; set => level = value; }
 	public int Exp { get => exp; set => exp = value; }
+  public int Attack { get => attack; set => attack = value; }
+  public int WeaponBonus { get => weaponBonus; set => weaponBonus = value; }
+  public string EquippedWeapon { get => equippedWeapon; set => equippedWeapon = value; }
+  public int Defence { get => defence; set => defence = value; }
+  public int ArmorBonus { get => armorBonus; set => armorBonus = value; }
+  public string EquippedArmor { get => equippedArmor; set => equippedArmor = value; }
 
-	// Start is called before the first frame update
-	void Start()
+  // Start is called before the first frame update
+  void Start()
 	{
 		// simple system to start out.
 		levelReqs = new int[maxLevel];
@@ -61,7 +67,7 @@ public class StatController : MonoBehaviour
 	public int toNextLevel()
 	{
 		if (Level == maxLevel) return Exp;
-		return levelReqs[level - 1];
+		return levelReqs[level - 1] - exp;
 	}
 
 	public void addExp(int gain)
@@ -91,8 +97,8 @@ public class StatController : MonoBehaviour
 		CurrentMP = MaxMP = custMP == 0 ?
 		  (int)(MaxMP * 1.05) :
 		  MaxMP + custMP;
-		attack++;
-		defence++;
+		Attack++;
+		Defence++;
 	}
 
 	// Update is called once per frame

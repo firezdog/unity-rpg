@@ -775,7 +775,7 @@ GameObject:
   - component: {fileID: 3093684337245405585}
   - component: {fileID: 1129222817384157965}
   m_Layer: 5
-  m_Name: Defence
+  m_Name: DefenceBonus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -841,7 +841,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Defence
+  m_Text: Defence Bonus
 --- !u!1 &1646866179231594948
 GameObject:
   m_ObjectHideFlags: 0
@@ -3511,6 +3511,16 @@ MonoBehaviour:
   buttonsPanelPrefab: {fileID: 565637761337235414, guid: f856d34ab1ade4c2db7b35b1c9617905,
     type: 3}
   button: {fileID: 6703285202876806712, guid: e1c33daeb5e99440ab40c92b39e408fe, type: 3}
+  charName: {fileID: 3294536467811174936}
+  hp: {fileID: 7619565427685878995}
+  mp: {fileID: 1845926589211027065}
+  strength: {fileID: 1437840316055812915}
+  defence: {fileID: 1974910109722211518}
+  weapon: {fileID: 736812926865855629}
+  attackBonus: {fileID: 6001603630162603015}
+  armor: {fileID: 5100817970971756406}
+  defenceBonus: {fileID: 1129222817384157965}
+  nextLevel: {fileID: 6685274585375555712}
 --- !u!1 &5042838133895956603
 GameObject:
   m_ObjectHideFlags: 0
@@ -3523,7 +3533,7 @@ GameObject:
   - component: {fileID: 4717301169110616686}
   - component: {fileID: 4355479365023428694}
   m_Layer: 5
-  m_Name: Attack
+  m_Name: AttackBonus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3589,7 +3599,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Attack
+  m_Text: Attack Bonus
 --- !u!1 &5124962509591571809
 GameObject:
   m_ObjectHideFlags: 0
@@ -3824,7 +3834,7 @@ GameObject:
   - component: {fileID: 4502462806081616930}
   - component: {fileID: 6791349494852925610}
   m_Layer: 5
-  m_Name: Defence
+  m_Name: DefenceBonus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3890,7 +3900,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Defence
+  m_Text: Defence Bonus
 --- !u!1 &5483515990932263539
 GameObject:
   m_ObjectHideFlags: 0
@@ -3994,7 +4004,7 @@ GameObject:
   - component: {fileID: 4497692674041928921}
   - component: {fileID: 6001603630162603015}
   m_Layer: 5
-  m_Name: Attack
+  m_Name: AttackBonus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4060,7 +4070,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Attack
+  m_Text: Attack Bonus
 --- !u!1 &5866981109796226379
 GameObject:
   m_ObjectHideFlags: 0
@@ -6471,7 +6481,7 @@ PrefabInstance:
     - target: {fileID: 4473017880052403563, guid: 9cd127a9f778afa4ba19ffb011894f8e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -236.63751
+      value: -78.879166
       objectReference: {fileID: 0}
     - target: {fileID: 4473017880052403563, guid: 9cd127a9f778afa4ba19ffb011894f8e,
         type: 3}
