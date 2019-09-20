@@ -61,7 +61,18 @@ public class StatController : MonoBehaviour
 	public float percentToLevel()
 	{
 		if (Level == maxLevel) return 1;
-		return (float) Exp / forNextLevel();
+
+		return (float) (Exp - BaseLineExp()) / (forNextLevel() - BaseLineExp());
+	}
+
+	public int BaseLineExp() {
+		int baseLine;
+		try {
+      baseLine = levelReqs[level - 2];
+    } catch {
+			baseLine = 0;
+		}
+		return baseLine;
 	}
 
 	public int forNextLevel() {

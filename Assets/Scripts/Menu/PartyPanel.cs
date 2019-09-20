@@ -49,7 +49,7 @@ public class PartyPanel : MonoBehaviour, IMenuPanel
 				status.Find("CharacterLevel").GetComponent<Text>().text = $"Level: {currentCharacter.Level}";
 				Transform nextLevelSlider = infoColumn.Find("NextLevelSlider");
 				nextLevelSlider.GetComponent<Slider>().value = currentCharacter.percentToLevel();
-				nextLevelSlider.Find("Experience").GetComponent<Text>().text = $"{currentCharacter.Exp}/{currentCharacter.forNextLevel()}";
+				nextLevelSlider.Find("Experience").GetComponent<Text>().text = $"{currentCharacter.Exp - currentCharacter.BaseLineExp()}/{currentCharacter.forNextLevel()}";
 			}
 			else
 			{
