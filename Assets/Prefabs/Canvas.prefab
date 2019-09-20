@@ -932,7 +932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 906aa80060496f14abdd627c82f84479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 4984547780255346615}
+  panel: {fileID: 4944371365507634342}
 --- !u!1 &1812835137971480184
 GameObject:
   m_ObjectHideFlags: 0
@@ -2221,7 +2221,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "HP:\uFE0F 100 / 100"
