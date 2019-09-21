@@ -117,7 +117,7 @@ MonoBehaviour:
   defence: 1
   armorBonus: 0
   equippedArmor: 
-  exp: 15
+  exp: 0
   level: 1
   maxLevel: 100
   levelSeed: 100
@@ -154,7 +154,7 @@ Transform:
   m_Children:
   - {fileID: 50956560322469167}
   - {fileID: 8587472561368188929}
-  - {fileID: 8421306849089740814}
+  - {fileID: 5466940346624080432}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -173,8 +173,8 @@ MonoBehaviour:
   statControllers:
   - {fileID: 3687062080468188385}
   - {fileID: 4443952937215831970}
-  - {fileID: 8459773533666885286}
---- !u!1 &7169739051130971848
+  - {fileID: 2174889861287740141}
+--- !u!1 &8956340823097551845
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,22 +182,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8421306849089740814}
-  - component: {fileID: 8459773533666885286}
+  - component: {fileID: 5466940346624080432}
+  - component: {fileID: 2174889861287740141}
   m_Layer: 0
   m_Name: Char3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8421306849089740814
+  m_IsActive: 0
+--- !u!4 &5466940346624080432
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7169739051130971848}
+  m_GameObject: {fileID: 8956340823097551845}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -205,13 +205,13 @@ Transform:
   m_Father: {fileID: 4915138997446716785}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8459773533666885286
+--- !u!114 &2174889861287740141
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7169739051130971848}
+  m_GameObject: {fileID: 8956340823097551845}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15985358a0b2f57448f37d67fb588b66, type: 3}
@@ -219,17 +219,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: Woody
   playerImage: {fileID: 21300000, guid: e0ddba6d3fcf21f49949fcc95c849aac, type: 3}
-  currentHP: 40
-  maxHP: 40
-  currentMP: 40
-  maxMP: 45
+  currentHP: 15
+  maxHP: 20
+  currentMP: 20
+  maxMP: 25
   attack: 1
   weaponBonus: 0
   equippedWeapon: 
   defence: 1
   armorBonus: 0
   equippedArmor: 
-  exp: 45
+  exp: 15
   level: 3
   maxLevel: 100
   levelSeed: 100

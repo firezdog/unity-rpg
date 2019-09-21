@@ -37,7 +37,7 @@ public class StatsPanel : MonoBehaviour, IMenuPanel
 		attackBonus.text = $"{currentlyDisplayed.WeaponBonus}";
 		armor.text = $"{currentlyDisplayed.EquippedArmor}";
 		defenceBonus.text = $"{currentlyDisplayed.ArmorBonus}";
-		nextLevel.text = $"{currentlyDisplayed.toNextLevel()}";
+		nextLevel.text = $"{currentlyDisplayed.forNextLevel()}";
   	}
 
 	public void Activate()
