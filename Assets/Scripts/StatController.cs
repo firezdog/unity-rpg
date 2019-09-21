@@ -3,11 +3,14 @@
 public class StatController : MonoBehaviour 
 {
 
+	#region basic information
 	[SerializeField] private string playerName;
 	public string PlayerName { get => playerName; set => playerName = value; }
 	[SerializeField] private Sprite playerImage;
 	public Sprite PlayerImage { get => playerImage; set => playerImage = value; }
+	#endregion
 
+	#region HP & MP
 	[SerializeField] private int currentHP = 100;
 	public int CurrentHP { get => currentHP; set => currentHP = value; }
 	[SerializeField] private int maxHP = 100;
@@ -16,42 +19,44 @@ public class StatController : MonoBehaviour
 	public int CurrentMP { get => currentMP; set => currentMP = value; }
 	[SerializeField] private int maxMP = 100;
 	public int MaxMP { get => maxMP; set => maxMP = value; }
+	#endregion
 
+	#region combat stats
 	[SerializeField] private int attack = 1;
+	public int Attack { get => attack; set => attack = value; }
 	[SerializeField] private int weaponBonus;
+  	public int WeaponBonus { get => weaponBonus; set => weaponBonus = value; }
 	[SerializeField] private string equippedWeapon;
+	public string EquippedWeapon { get => equippedWeapon; set => equippedWeapon = value; }
 	[SerializeField] private int defence = 1;
+  	public int Defence { get => defence; set => defence = value; }
 	[SerializeField] private int armorBonus;
+  	public int ArmorBonus { get => armorBonus; set => armorBonus = value; }
 	[SerializeField] private string equippedArmor;
+	public string EquippedArmor { get => equippedArmor; set => equippedArmor = value; }
+	#endregion
 
+	#region character level
 	[SerializeField] private int exp;
+	public int Exp { get => exp; set => exp = value; }
 	[SerializeField] private int level;
+	public int Level { get => level; set => level = value; }
+	#endregion
+
+	#region level book-keeping
 	[SerializeField, Range(1, 100)] private int maxLevel = 100;
 	[SerializeField] private int levelSeed = 100;
 	private int[] levelReqs;
 	[SerializeField] private int[] customLevelReqs = new int[100];
 	[SerializeField] private int[] customMPLvlBonus = new int[100];
 	[SerializeField] private int[] customHPLvlBonus = new int[100];
-
-	
-	
-	
-	
-
-	public int Level { get => level; set => level = value; }
-	public int Exp { get => exp; set => exp = value; }
-  	public int Attack { get => attack; set => attack = value; }
-  	public int WeaponBonus { get => weaponBonus; set => weaponBonus = value; }
-	public string EquippedWeapon { get => equippedWeapon; set => equippedWeapon = value; }
-  	public int Defence { get => defence; set => defence = value; }
-  	public int ArmorBonus { get => armorBonus; set => armorBonus = value; }
-  	public string EquippedArmor { get => equippedArmor; set => equippedArmor = value; }
+	#endregion
 
   	// Start is called before the first frame update
   	void Start()
 	{
 		// simple system to start out. -- not zero indexed, i.e. req for level 2 should be levelReqs[2]
-		levelReqs = new int[maxLevel];
+		levelReqs = new int[maxLevel + 1];
 		// customLevelReqs[0] can override the level seed.
 		levelReqs[2] = levelSeed;
 		for (int i = 3; i < levelReqs.Length; i++)
@@ -71,11 +76,13 @@ public class StatController : MonoBehaviour
 	}
 
 	public int relativeExp() {
+		if (level == maxLevel) return levelReqs[level] - levelReqs[level - 1];
 		int baseLine = levelReqs[level];
 		return Exp - baseLine;
 	}
 
 	public int relativeExpForNextLevel() {
+		if (level == maxLevel) return levelReqs[level] - levelReqs[level - 1];
 		return levelReqs[level + 1] - levelReqs[level];
 	}
 
