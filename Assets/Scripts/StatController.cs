@@ -47,9 +47,9 @@ public class StatController : MonoBehaviour
 	[SerializeField, Range(1, 100)] private int maxLevel = 100;
 	[SerializeField] private int levelSeed = 100;
 	private int[] levelReqs;
-	[SerializeField] private int[] customLevelReqs = new int[100];
-	[SerializeField] private int[] customMPLvlBonus = new int[100];
-	[SerializeField] private int[] customHPLvlBonus = new int[100];
+	[SerializeField] private int[] customLevelReqs = new int[101];
+	[SerializeField] private int[] customMPLvlBonus = new int[101];
+	[SerializeField] private int[] customHPLvlBonus = new int[101];
 	#endregion
 
   	// Start is called before the first frame update
@@ -62,11 +62,11 @@ public class StatController : MonoBehaviour
 		for (int i = 3; i < levelReqs.Length; i++)
 		{
 			levelReqs[i] = customLevelReqs[i] == 0 ?
-			  (int)(levelReqs[i - 1] * 2.05) :
-			  customLevelReqs[i];
+			  	(int)(levelReqs[i - 1] * 2.05) :
+				customLevelReqs[i];
 		}
 		// to prevent me from setting exp to a value lower than current level req's.
-		exp = relativeExp() < 0 ? levelReqs[level] : exp; 
+		Exp = relativeExp() < 0 ? levelReqs[level] : exp; 
 	}
 
 	public float percentToLevel()
