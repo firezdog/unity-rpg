@@ -37,7 +37,7 @@ public class StatsPanel : MonoBehaviour, IMenuPanel
 		attackBonus.text = $"{currentlyDisplayed.WeaponBonus}";
 		armor.text = $"{currentlyDisplayed.EquippedArmor}";
 		defenceBonus.text = $"{currentlyDisplayed.ArmorBonus}";
-		nextLevel.text = $"{currentlyDisplayed.forNextLevel()}";
+		nextLevel.text = $"{currentlyDisplayed.remainingExpForNextLevel()}";
   	}
 
 	public void Activate()
@@ -52,7 +52,6 @@ public class StatsPanel : MonoBehaviour, IMenuPanel
 		buttonsPanelInstance = Instantiate(buttonsPanelPrefab);
 		buttonsPanelInstance.transform.SetParent(gameObject.transform, false);
 		StatController[] characters = gm.StatControllers;
-		print(characters);
 		foreach (StatController character in characters) 
 		{
 			if (!character.gameObject.activeInHierarchy) continue;

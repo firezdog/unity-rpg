@@ -1,35 +1,59 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityRPG;
 
 public class PartyPanel : MonoBehaviour, IMenuPanel
 {
 
-	GameManager gm;
+  [SerializeField] GameObject charSubpanel;
 
-	// Start is called before the first frame update
-	void Start()
-	{
-		gm = GameManager.instance;
-		UpdateParty();
-	}
+  GameManager gm;
 
-	private void Update()
-	{
-		UpdateParty();
-	}
+  // Start is called before the first frame update
+  void Start()
+  {
+    gm = GameManager.instance;
+    // UpdateParty();
+  }
 
-	public void Activate()
-	{
-		gameObject.SetActive(true);
-	}
+  private void GenerateParty()
+  {
+    StatController[] characters = gm.StatControllers;
+    foreach (StatController character in characters)
+    {
+			if (!character.gameObject.activeInHierarchy) continue;
+      GameObject newPanel = Instantiate(charSubpanel);
+      newPanel.transform.SetParent(gameObject.transform, false);
+    }
+  }
 
-	public void Blur()
-	{
-		gameObject.SetActive(false);
-	}
+  private void DestroyParty()
+  {
+    foreach (Transform panel in gameObject.transform)
+    {
+      Destroy(panel.gameObject);
+    }
+  }
 
-	private void UpdateParty()
+  private void Update()
+  {
+    // UpdateParty();
+  }
+
+  public void Activate()
+  {
+    gameObject.SetActive(true);
+    GenerateParty();
+  }
+
+  public void Blur()
+  {
+    gameObject.SetActive(false);
+    DestroyParty();
+  }
+
+  /* private void UpdateParty()
 	{
 		StatController[] characters = gm.StatControllers;
 		Transform[] characterFields = GetMenuCharacterFields();
@@ -57,7 +81,7 @@ public class PartyPanel : MonoBehaviour, IMenuPanel
 				characterFields[i].gameObject.SetActive(false);
 			}
 		}
-	}
+	} 
 
 	private Transform[] GetMenuCharacterFields()
 	{
@@ -68,5 +92,5 @@ public class PartyPanel : MonoBehaviour, IMenuPanel
 			characterFields[i] = characters.GetChild(i);
 		}
 		return characterFields;
-	}
+	} */
 }
