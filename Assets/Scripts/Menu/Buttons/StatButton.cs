@@ -14,7 +14,7 @@ public class StatButton : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		buttonText().text = character.name;
+		buttonText().text = character.PlayerName;
 	}
 
 	// Update is called once per frame

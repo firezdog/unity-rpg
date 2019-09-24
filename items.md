@@ -7,3 +7,12 @@
         * https://www.gamasutra.com/blogs/MeganFox/20101208/88590/Game_Engines_101_The_EntityComponent_Model.php
       * so the idea could be this -- you have a restoreHealth component that restores some health to a character, a restore magic component that restores some magic to a character, an equipAsWeapon component or equipAsArmor component that adds bonuses to relevant stats...then each item involves these various components -- so you could have various kinds of multi-potions with both magic and health restoring capabilities etc.  But each item is probably a prefab with an item script attached, and the item script then contains an array of its components or something?
       * https://gamedev.stackexchange.com/questions/147873/creating-a-robust-item-system
+
+# Game Engines 101: The Entity / Component Model
+* Why not to use classes
+* entities as data stores with attached components
+  * the components modify the shared data and may or may not be aware of each other
+* example: a monster
+  * sprite, physics, AI -- the AI decides how to move and passes that on to the monster; the physics takes the plan and creates a trajectory; the sprite animates the trajectory etc.
+* example: trap
+  * trigger, explosion -- trigger defines area -- when the area is occupied, it tells the entity it has been "triggered" -- and then the explosion component, based on the trigger, sends out messages to update motion of the entity that triggered (or nearby entities)
