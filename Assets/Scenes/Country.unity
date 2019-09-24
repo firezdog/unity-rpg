@@ -15420,6 +15420,20 @@ PrefabInstance:
       propertyPath: m_UsedByComposite
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 415537305, guid: 48dca38ec70c548d29d5d6bd296a5297, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950991087258814254, guid: 48dca38ec70c548d29d5d6bd296a5297,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678895984516380065, guid: 48dca38ec70c548d29d5d6bd296a5297,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48dca38ec70c548d29d5d6bd296a5297, type: 3}
 --- !u!1001 &400166465
