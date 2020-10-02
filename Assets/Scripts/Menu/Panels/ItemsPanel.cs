@@ -5,12 +5,12 @@ public class ItemsPanel : MonoBehaviour, IMenuPanel
 {
   public void Activate()
   {
-    print("Opening Items");
+    gameObject.SetActive(true);
   }
 
   public void Blur()
   {
-    print("Closing Items");
+    gameObject.SetActive(false);
   }
 
   // Start is called before the first frame update

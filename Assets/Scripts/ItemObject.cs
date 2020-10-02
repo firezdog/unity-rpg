@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ItemObject : MonoBehaviour
 {
@@ -17,5 +15,10 @@ public class ItemObject : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        GameManager.instance.AddItem(item);
+        Destroy(gameObject);
     }
 }
